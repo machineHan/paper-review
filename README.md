@@ -37,19 +37,23 @@ Standard image captioning benchmark가 전자에 속한다.
 ## Introduction
 
 
-인터넷에서 크롤한 이미지 텍스트 데이터셋은 noise가 너무 많다. 이를 전처리하는 method가 많지만 대부분이 휴리스틱(증명이 없는 상식에 기반한 방식)에 기반한다. 캡션 전처리 기술 대부분의 방법이 어떤 상황(캡션 퀄리티가 좋아도, 별로여도)이든 대부분의 데이터를 버린다.
+인터넷에서 크롤한 이미지 텍스트 데이터셋은 noise가 너무 많다. 이를 전처리하는 method가 많지만 대부분이 휴리스틱에 기반한다. 캡션 전처리 기술 대부분의 방법이 어떤 상황(캡션 퀄리티가 좋아도, 별로여도)이든 대부분의 데이터를 버린다.
 
 우리는 이 버려지는 데이터에 focus한다. 버려지는 데이터 셋의 일부를 생성 캡션을 이용해 재사용하겠다. 전처리가 최소화된 Datacamp benchmark를 사용하겠다. 이로서 raw data와 유사한 환경에서 실험이 가능하다. 
 
-생성 캡션, 합성 캡성을 좀 혼용하여 사용하는데 둘이 같은 뜻으로 사용했다. 이를 명심하고 읽도록
+> 생성 캡션, 합성 캡성을 좀 혼용하여 사용하는데 둘이 같은 뜻으로 사용했다. 이를 명심하고 읽도록
 
 최근의 캡션 생성 모델은 확실히 좋다. 생성된 캡션으로 CLIP을 훈련하니 좋은 성능을 낸다. 기존에 사용하던 코사인 유사도 상위 n%를 이용한 raw data 훈련보다, 합성 캡션을 이용해서 훈련하는 방식이 더 낫다.
+<br/>
 
 합성 캡션(생성된 캡션)의 이점을 이해하기 위해, 캡션 noise, diversity를 측정해야한다. 그리고 두 특성이 모델 성능에 얼마나 영향을 미치는지 알아야한다.
+<br/>
 
 기존의 fittering방식은 noise는 줄이지만 diversity에 손상이 크다. 합성 캡션을 사용하는 것으로 이 손해를 매꿀 수 있다. 그 이유는 기존의 방식 + @(원래 버려지던 데이터들) 기 때문에 기존에 비해 다양성이 떨어질 수 없다
+<br/>
 
 좋은 downstream 성능을 내기위한 캡션모델 선택은 쉽지 않다. 이미지 캡션 밴치마크의 성능이 좋은 모델이 생성한 캡션이 꼭 CLIP 훈련에 좋은 것이 아니기 때문이다. 
+<br/>
 
 Fine-tuning, Optimization in caption model는 CIDEr에선 좋은 점수를 받지만, 실제 multimodal training(메인 모델)에서는 이와 비례하지 않다. 캡션모델을 downstream에 전문화하면 안된다. 즉, 캡션 생성모델은 가져온 그대로 사용해야 좋은 성능을 낼 수 있다.
 
@@ -66,12 +70,16 @@ Fine-tuning, Optimization in caption model는 CIDEr에선 좋은 점수를 받�
 > Standard image captioning benchmark에서 높은 점수를 딴 생성 캡션이 정말로 모델 훈련시 더 좋을까?
 
 기존엔 reference-based metrix이 많이 쓰였다. CIDEr, BLEU4 등등. 당연히 이전에 작성된 논문중에 이를 사용하여 성능을 측정한 것이 많다. Reference-based metrix를 사용했기에 좋은 성능지표를 받기 위해 captioning model은 fine-tuning하였다.
+<br/>
 
 우리는 BLIP, OpenCLIP-CoCa with and without fine-tuning 이렇게 4가지 종류의 캡션 생성모델로 생성한 합성 캡션으로 메인 모델인 CLIP을 훈련시킬 것이다. 결과를 말하자면 fine-tuning 모델은 메인모델의 검색능력은 올리지만 이미지넷의 분류능력은 떨어뜨린다. 우리는 fine-tuning이 생성된 캡션의 다양성을 떨어뜨려 생긴 결론이라고 생각한다. 증명은 안한듯
+<br/>
 
 fine-tuning하지 않은 모델은 reference-based metrix에서 낮은 점수를 받는 경향이 있다. 이전의 논문들은 이 reference-based metrix을 기저에 두고 생각하기에 fine-tuning하지 않는다면 쓸모가 없을 거라고 생각을 했을 것이다.
+<br/>
 
 Reference-based metrix은 사람이 생성한 reference caption에 의존해 결과를 내는 반면 reference-free metrix은 생성된 캡션 + 이미지간에 관계에 대해 결과는 낸다. 우리는 이 reference-free metrix중 하나인 CLIP-S에 대해 계산할 것이다. 실제로 실험에서 CLIP-S,cosine similarity와 같은 reference-free metrix은 CIDEr score과 같은 reference-based metrix에 다른 움직이며 좋은 결과를 보여준다. 더 zero-shot performance를 잘 대변한다.
+<br/>
 
 캡션 생성모델인 BLIP2가 굉장히 강력하므로 따로 언급이 없다면 이를 사용하여 캡션을 생성할 것이다
 
