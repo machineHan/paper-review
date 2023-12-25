@@ -14,6 +14,12 @@
 
 캡션 생성 모델의 성능을 평가하는 수단 여러개를 비교. BLUE4, CIDEr, cosine simolarity … 생성된 캡션들을 가지고 메인모델 훈련후, 메인모델에서 퍼포먼스를 측정하는 방식으로 성능 측정.
 
+
+
+
+
+
+
 논문에서 등장한 benchmark는 크게 2종류로 pretrained CLIP model을 평가할 것과, caption mixing + filtering할 때 사용하는 것 이렇게 2개로 나눠짐. 이를 구분해서 생각하자
 
 Standard image captioning benchmark가 전자에 속한다.
