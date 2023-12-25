@@ -1,7 +1,5 @@
 # paper-reveiw-Improving-multimodal-dataset-with-Image-Captioning
 
-Improving multimodal datasets with image captioning
-===
 
 ## 요약
 
@@ -51,12 +49,12 @@ Standard image captioning benchmark가 전자에 속한다.
 최근의 캡션 생성 모델은 확실히 좋다. 생성된 캡션으로 CLIP을 훈련하니 좋은 성능을 낸다. 기존에 사용하던 코사인 유사도 상위 n%를 이용한 raw data 훈련보다, 합성 캡션을 이용해서 훈련하는 방식이 더 낫다.
 
 합성 캡션(생성된 캡션)의 이점을 이해하기 위해, 캡션 noise, diversity를 측정해야한다. 그리고 두 특성이 모델 성능에 얼마나 영향을 미치는지 알아야한다.
+
 기존의 fittering방식은 noise는 줄이지만 diversity에 손상이 크다. 합성 캡션을 사용하는 것으로 이 손해를 매꿀 수 있다. 그 이유는 기존의 방식 + @(원래 버려지던 데이터들) 기 때문에 기존에 비해 다양성이 떨어질 수 없다
 
 좋은 downstream 성능을 내기위한 캡션모델 선택은 쉽지 않다. 이미지 캡션 밴치마크의 성능이 좋은 모델이 생성한 캡션이 꼭 CLIP 훈련에 좋은 것이 아니기 때문이다. 
 
-Fine-tuning, Optimization in caption model는 CIDEr에선 좋은 점수를 받지만, 실제 multimodal training(메인 모델)에서는 이와 비례하지 않다. 캡션모델을 downstream에 전문화하면 안된다.
-즉, 캡션 생성모델은 가져온 그대로 사용해야 좋은 성능을 낼 수 있다.
+Fine-tuning, Optimization in caption model는 CIDEr에선 좋은 점수를 받지만, 실제 multimodal training(메인 모델)에서는 이와 비례하지 않다. 캡션모델을 downstream에 전문화하면 안된다. 즉, 캡션 생성모델은 가져온 그대로 사용해야 좋은 성능을 낼 수 있다.
 
 이 논문의 핵심은 다음과 같다
 
