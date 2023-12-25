@@ -28,8 +28,6 @@ Standard image captioning benchmark가 전자에 속한다.
 
 
 ## Abstract 
-
-
 인터넷에서 터프하게 크롤한 데이터는 noise가 많다. 이를 제거하는 method 역시 존재하지만 이는 data diversity를 크게 훼손한다. 우리는 이미지 캡션의 퀄리티, 특히 noise 관점에서 집중한다. 
 
 생성 캡션의 성능을 평가하던 기존의 standard benchmark가 별로라는 것도 발견했다
