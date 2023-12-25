@@ -1,10 +1,12 @@
 # paper-reveiw-Improving-multimodal-dataset-with-Image-Captioning
 
 Improving multimodal datasets with image captioning
+===
 
 요약
+---
 
- 실험 순서 
+# 실험 순서 
 1. Datacamp dataset scale 선택
 2. 캡션 생성모델 선정(BLIP, BLIP2 , OpenCLIP-CoCa) (standard 캡션 생성 모델에 대한 metrics에 대한 재고)
 3. 생성된 캡션 + raw 캡션을 가지고 여러가지 필터링, 데이터 셋 구축
@@ -28,6 +30,7 @@ image captioning benchmark : cosine similarity, BLUE4, CIDEr, ImageNet accuracy.
 
 
 Abstract 
+---
 
 인터넷에서 터프하게 크롤한 데이터는 noise가 많다. 이를 제거하는 method 역시 존재하지만 이는 data diversity를 크게 홰손한다. 우리는 이미지 캡션의 퀄리티, 특히 noise 관점에서 집중한다. 
 
@@ -37,6 +40,7 @@ ex) BLUE benchmark에서 가장 높은 점수를 받은 캡션이 가장 좋은 
 
 
 Introduction
+---
 
 인터넷에서 크롤한 이미지 텍스트 데이터셋은 noise가 너무 많다. 이를 전처리하는 method가 많지만 대부분이 휴리스틱(증명이 없는 상식에 기반한 방식)에 기반한다. 캡션 전처리 기술 대부분의 방법이 어떤 상황(캡션 퀄리티가 좋아도, 별로여도)이든 대부분의 데이터를 버린다.
 
@@ -55,12 +59,13 @@ Fine-tuning, Optimization in caption model는 CIDEr에선 좋은 점수를 받�
 즉, 캡션 생성모델은 가져온 그대로 사용해야 좋은 성능을 낼 수 있다.
 
 이 논문의 핵심은 다음과 같다
--합성 캡션 집단은 노이즈도 적고 다양성도 적다. Raw 데이터 집단은 노이즈도 높고 다양성도 높다. 이를 섞어서 둘의 이득을 취하겠다.
--사용하는 데이터의 양에 따라 필터링 성능이 달라진다. 즉 특정 스케일마다 최상인 필터링 방식이 있다는 것이다.
--standard image caption benchmark에서의 성능이 실성능과 비례하지 않다.
--캡션 생성 모델을 fine-tuned하는 것은 좋지않다.
+>합성 캡션 집단은 노이즈도 적고 다양성도 적다. Raw 데이터 집단은 노이즈도 높고 다양성도 높다. 이를 섞어서 둘의 이득을 취하겠다.
+>사용하는 데이터의 양에 따라 필터링 성능이 달라진다. 즉 특정 스케일마다 최상인 필터링 방식이 있다는 것이다.
+>standard image caption benchmark에서의 성능이 실성능과 비례하지 않다.
+>캡션 생성 모델을 fine-tuned하는 것은 좋지않다.
 
 Impact of model specialization on captions generated for multimodal training
+---
 
 Standard image captioning benchmark에서 높은 점수를 딴 생성 캡션이 정말로 모델 훈련시 더 좋을까?
 
@@ -75,6 +80,7 @@ Reference-based metrix은 사람이 생성한 reference caption에 의존해 결
 캡션 생성모델인 BLIP2가 굉장히 강력하므로 따로 언급이 없다면 이를 사용하여 캡션을 생성할 것이다
 
 Filtering raw and synthetic captions
+---
 
 이제 실험에서 사용할 필터링 방식에 대해 설명하겠다.
 1. No filtering: 모든 이미지 + 생성캡션 사용
@@ -96,13 +102,14 @@ What makes synthetic captions effective?
 그에 반면 BLIP2 합성 캡션만을 사용하여 훈련을 할 경우 정확도는 눈에 띄게 오르지만 unique trigram의 수가 많이 줄어든다.
 이 둘을 mix + filtering 한다면 정확도와 diversity 두 마리의 토끼를 모두 잡을 수 있다.
 
-——————————————————-
+***
 N-gram model : n - 1개의 단어를 사용해서 나올 다음 단어를 예측
 Ex) trigram : sample sentence “An adorable little boy is spreading ??”  : 만약 spreading 의 다음 단어를 예측하고 싶다면 ‘boy is' 만을 입력, ‘An adorable little' 는 같이 입력되지 않는다.
 그리고 논문에서 unique trigram의 갯수를 표기하는데 이는 단어 예측 시 넣어지는 n-1 단어의 조합 수를 뜻하고, 이는 diversity와 밀접한 연관이 있다.
-——————————————————-
+***
 
 느낌점
+---
 
 multimodal learning에 익숙하지 않은 채로 논문을 읽었다. 그래서 정말 오랜시간이 걸려 이해를 했다. 특히 논문에서 등장하는 아키텍처에 대한 구분이 너무 어려웠다. 애초에 처음으로 benchmark, dataset 에 큰 관심을 두고 읽은 논문이라 첫 리뷰시 이해가 되는 내용이 너무 없었다. 하지만 여러 차례 다시 읽어보니 이전에 읽었던 내용과 다르게 이해됐다. 
 확실이 이 논문대로 코드로 구현을 한다면면 들어온 데이터셋의 어떻게 흘러가고 어떤 식으로 변환되어 어떤 출력이 나오는지를 머리 속에 그리며 상상하니 큰 도움이 되었다.
