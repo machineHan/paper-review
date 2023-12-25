@@ -106,7 +106,8 @@ Reference-based metrix은 사람이 생성한 reference caption에 의존해 결
 
 ***
 N-gram model : n - 1개의 단어를 사용해서 나올 다음 단어를 예측
-Ex) trigram : sample sentence “An adorable little boy is spreading ??”  : 만약 spreading 의 다음 단어를 예측하고 싶다면 ‘boy is' 만을 입력, ‘An adorable little' 는 같이 입력되지 않는다.
+> Ex) trigram : sample sentence “An adorable little boy is spreading ??”  : 만약 spreading 의 다음 단어를 예측하고 싶다면 ‘boy is' 만을 입력, ‘An adorable little' 는 같이 입력되지 않는다.
+
 그리고 논문에서 unique trigram의 갯수를 표기하는데 이는 단어 예측 시 넣어지는 n-1 단어의 조합 수를 뜻하고, 이는 diversity와 밀접한 연관이 있다.
 ***
 
