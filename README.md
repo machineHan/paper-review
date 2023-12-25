@@ -6,7 +6,7 @@ Improving multimodal datasets with image captioning
 요약
 ---
 
-# 실험 순서 
+실험 순서 
 1. Datacamp dataset scale 선택
 2. 캡션 생성모델 선정(BLIP, BLIP2 , OpenCLIP-CoCa) (standard 캡션 생성 모델에 대한 metrics에 대한 재고)
 3. 생성된 캡션 + raw 캡션을 가지고 여러가지 필터링, 데이터 셋 구축
