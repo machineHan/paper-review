@@ -22,20 +22,20 @@ Standard image captioning benchmark가 전자에 속한다.
 
 이 논문에서 등장하는 여러가지 아키텍처를 명확히 구분해야함
 
-Main model : CLIP
-Caption model : BLIP1, 2, OpenCLIP-CoCa
-Pretrain Benchmark : datacamp
-image captioning benchmark : cosine similarity, BLUE4, CIDEr, ImageNet accuracy.. etc
+    Main model : CLIP
+    Caption model : BLIP1, 2, OpenCLIP-CoCa
+    Pretrain Benchmark : datacamp
+    image captioning benchmark : cosine similarity, BLUE4, CIDEr, ImageNet accuracy.. etc
 
 
 
 ## Abstract 
 
 
-인터넷에서 터프하게 크롤한 데이터는 noise가 많다. 이를 제거하는 method 역시 존재하지만 이는 data diversity를 크게 홰손한다. 우리는 이미지 캡션의 퀄리티, 특히 noise 관점에서 집중한다. 
+인터넷에서 터프하게 크롤한 데이터는 noise가 많다. 이를 제거하는 method 역시 존재하지만 이는 data diversity를 크게 훼손한다. 우리는 이미지 캡션의 퀄리티, 특히 noise 관점에서 집중한다. 
 
 생성 캡션의 성능을 평가하던 기존의 standard benchmark가 별로라는 것도 발견했다
-ex) BLUE benchmark에서 가장 높은 점수를 받은 캡션이 가장 좋은 성능을 내지 못함.
+> ex) BLUE benchmark에서 가장 높은 점수를 받은 캡션이 가장 좋은 성능을 내지 못함.
 
 
 
@@ -59,15 +59,16 @@ Fine-tuning, Optimization in caption model는 CIDEr에선 좋은 점수를 받�
 즉, 캡션 생성모델은 가져온 그대로 사용해야 좋은 성능을 낼 수 있다.
 
 이 논문의 핵심은 다음과 같다
->합성 캡션 집단은 노이즈도 적고 다양성도 적다. Raw 데이터 집단은 노이즈도 높고 다양성도 높다. 이를 섞어서 둘의 이득을 취하겠다.
->사용하는 데이터의 양에 따라 필터링 성능이 달라진다. 즉 특정 스케일마다 최상인 필터링 방식이 있다는 것이다.
->standard image caption benchmark에서의 성능이 실성능과 비례하지 않다.
->캡션 생성 모델을 fine-tuned하는 것은 좋지않다.
+
+    -합성 캡션 집단은 노이즈도 적고 다양성도 적다. Raw 데이터 집단은 노이즈도 높고 다양성도 높다. 이를 섞어서 둘의 이득을 취하겠다.
+    -사용하는 데이터의 양에 따라 필터링 성능이 달라진다. 즉 특정 스케일마다 최상인 필터링 방식이 있다는 것이다.
+    -standard image caption benchmark에서의 성능이 실성능과 비례하지 않다.
+    -캡션 생성 모델을 fine-tuned하는 것은 좋지않다.
 
 ## Impact of model specialization on captions generated for multimodal training
 
 
-Standard image captioning benchmark에서 높은 점수를 딴 생성 캡션이 정말로 모델 훈련시 더 좋을까?
+> Standard image captioning benchmark에서 높은 점수를 딴 생성 캡션이 정말로 모델 훈련시 더 좋을까?
 
 기존엔 reference-based metrix이 많이 쓰였다. CIDEr, BLEU4 등등. 당연히 이전에 작성된 논문중에 이를 사용하여 성능을 측정한 것이 많다. Reference-based metrix를 사용했기에 좋은 성능지표를 받기 위해 captioning model은 fine-tuning하였다.
 
@@ -83,20 +84,21 @@ Reference-based metrix은 사람이 생성한 reference caption에 의존해 결
 
 
 이제 실험에서 사용할 필터링 방식에 대해 설명하겠다.
-  1. No filtering: 모든 이미지 + 생성캡션 사용
-  2. CLIP score filtering : 코사인 유사도를 따져 상위 n%만 학습
-  3. CLIP score filtering with IamgeNet1k clustering : ImageNet1k의 이미지 중 클러스터 중심이 가장 가까운 이미지만 선택. 그리고 이 집합과 top n%의 집합을 가지고 교집합으로 데이터를 선택, 훈련이 방식이 raw caption을 가지고 훈련하던 방식중 가장 좋았던 방법임.
-  4. Combining raw and synthetic captions : 말 그래도
 
-예시 ) raw(top 30) + BLIP2(70) : raw caption-image의 코사인 유사도중 top 30% 사용 + 걸러진 나머지 모두를 generated caption로 훈련
+    1. No filtering: 모든 이미지 + 생성캡션 사용
+    2. CLIP score filtering : 코사인 유사도를 따져 상위 n%만 학습
+    3. CLIP score filtering with IamgeNet1k clustering : ImageNet1k의 이미지 중 클러스터 중심이 가장 가까운 이미지만 선택. 그리고 이 집합과 top n%의 집합을 가지고 교집합으로 데이터를 선택, 훈련이 방식이 raw caption을 가지고 훈련하던 방식중 가장 좋았던 방법임.
+    4. Combining raw and synthetic captions : 말 그래도
 
-raw(top 30) + BLIP2(70, filtered)  : raw caption-image의 코사인 유사도중 top 30% 사용 + 걸러진 나머지를 generated caption를 사용하여 코사인 유사도 측정, 임계치 70 이하의 데이터셋을 버리고 나머지를 다시 훈련풀로 복구
+> 예시 ) raw(top 30) + BLIP2(70) : raw caption-image의 코사인 유사도중 top 30% 사용 + 걸러진 나머지 모두를 generated caption로 훈련
 
-BLIP2(top 70) + raw(30, filtered) : generated caption-image의 코사인 유사도중 top 70% 사용 + 걸러진 나머지를 raw caption로 코사인 유사도 측정, 임계치 30 이하를 거르고 나머지를 다시 훈련 풀로 복구
+> raw(top 30) + BLIP2(70, filtered)  : raw caption-image의 코사인 유사도중 top 30% 사용 + 걸러진 나머지를 generated caption를 사용하여 코사인 유사도 측정, 임계치 70 이하의 데이터셋을 버리고 나머지를 다시 훈련풀로 복구
+
+> BLIP2(top 70) + raw(30, filtered) : generated caption-image의 코사인 유사도중 top 70% 사용 + 걸러진 나머지를 raw caption로 코사인 유사도 측정, 임계치 30 이하를 거르고 나머지를 다시 훈련 풀로 복구
 
 실험 결과를 보면 mix caption을 사용할때, 포함되는 raw caption이 커지면 커질 수록 단순히 합성 캡션만을 사용했을 때보다, 성능이 낮아진다. 즉, 합성 캡션을 모두 사용하는 것 보단 필터링을 사용하여 하면 좋은 성능을 낼 수 있다.
 
-What makes synthetic captions effective?
+## What makes synthetic captions effective?
 
 실험을 통해 본 결과 raw만 쓴다면 정확도는 낮다, 하지만 결과로 나오는 unique trigram의 수가 굉장히 많다.
 그에 반면 BLIP2 합성 캡션만을 사용하여 훈련을 할 경우 정확도는 눈에 띄게 오르지만 unique trigram의 수가 많이 줄어든다.
@@ -107,6 +109,7 @@ N-gram model : n - 1개의 단어를 사용해서 나올 다음 단어를 예측
 Ex) trigram : sample sentence “An adorable little boy is spreading ??”  : 만약 spreading 의 다음 단어를 예측하고 싶다면 ‘boy is' 만을 입력, ‘An adorable little' 는 같이 입력되지 않는다.
 그리고 논문에서 unique trigram의 갯수를 표기하는데 이는 단어 예측 시 넣어지는 n-1 단어의 조합 수를 뜻하고, 이는 diversity와 밀접한 연관이 있다.
 ***
+
 
 ## 느낌점
 
