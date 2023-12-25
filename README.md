@@ -7,11 +7,11 @@ Improving multimodal datasets with image captioning
 
 
 ### 실험 순서 
-  1. Datacamp dataset scale 선택
-  2. 캡션 생성모델 선정(BLIP, BLIP2 , OpenCLIP-CoCa) (standard 캡션 생성 모델에 대한 metrics에 대한 재고)
-  3. 생성된 캡션 + raw 캡션을 가지고 여러가지 필터링, 데이터 셋 구축
-  4. 완성된 데이터 셋을 가지고 메인 모델 training 
-  5. 4번에서 훈련한 메인 모델을 가지고 여러가지 데이터 셋(ImageNet, 38 task average)에 대한 평가
+    1. Datacamp dataset scale 선택
+    2. 캡션 생성모델 선정(BLIP, BLIP2 , OpenCLIP-CoCa) (standard 캡션 생성 모델에 대한 metrics에 대한 재고)
+    3. 생성된 캡션 + raw 캡션을 가지고 여러가지 필터링, 데이터 셋 구축
+    4. 완성된 데이터 셋을 가지고 메인 모델 training 
+    5. 4번에서 훈련한 메인 모델을 가지고 여러가지 데이터 셋(ImageNet, 38 task average)에 대한 평가
 
 
 캡션 생성 모델의 성능을 평가하는 수단 여러개를 비교. BLUE4, CIDEr, cosine simolarity … 생성된 캡션들을 가지고 메인모델 훈련후, 메인모델에서 퍼포먼스를 측정하는 방식으로 성능 측정.
