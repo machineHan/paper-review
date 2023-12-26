@@ -38,12 +38,13 @@ ORCA는 총 3단계로 간추릴 수 있다.
 
 ## ORCA Workflow
 
-타겟 도메인 : 우리가 적용하고싶은 테스크
-소스 도메인 : 해결을 위해 사용할 테스크
->Ex) BERT모델을 이용하여 (소스 도메인) 음성 인지(타겟 도메인)를 작업하겠다.
-소스 모델 : pretrained model using source dataset
-타겟 모델 : entire model set = embedder + body(pretrained source model) + predictor
-> target model = source model + @
+    타겟 도메인 : 우리가 적용하고싶은 테스크
+    소스 도메인 : 해결을 위해 사용할 테스크
+    >Ex) BERT모델을 이용하여 (소스 도메인) 음성 인지(타겟 도메인)를 작업하겠다.
+
+    소스 모델 : pretrained model using source dataset
+    타겟 모델 : entire model set = embedder + body(pretrained source model) + predictor
+    > target model = source model + @
 
 
 타겟과 소스는 feature space, label space, probability distribution 까지 너무 다르다. 자명한 얘기
