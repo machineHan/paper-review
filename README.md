@@ -69,7 +69,8 @@ embedder는 target dimension과 source dimension을 맞추며, 변환된 embeddi
 embedder는 single cnn layer이다. 주요 파라미터는 k로 stride, kernel size를 나타낸다.
 embedder를 통해 embedding feature를 만드는 과정은 다음과 같다.
 
-![KakaoTalk_Photo_2023-12-26-20-30-03](https://github.com/machineHan/paper-review-ORCA/assets/154798552/de56c559-0dcc-43b4-8495-2829afb80348)
+![KakaoTalk_Photo_2023-12-26-20-34-14](https://github.com/machineHan/paper-review-ORCA/assets/154798552/d669c5a0-1a3a-4b2b-9c49-6c0d41dcf788)
+
 
 
 
