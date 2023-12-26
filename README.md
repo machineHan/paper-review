@@ -83,7 +83,9 @@ Body는 위에서 변환한 embedding feature를 가지고 output을 뱉는다. 
 
 이제 body에서 나온 output tensor를 이용하여 target domain에 맞는 output shape를 만들어야한다. 이 작업을 하는 것이 Predictor이다.
 
-Domain task의 종류는 매우 많기에 가장 일반적인 classification에 대해 예를 들겠다. 
+Domain task의 종류는 매우 많기에 가장 일반적인 classification에 대해 예를 들겠다. 과정은 다음과 같다.
+![KakaoTalk_Photo_2023-12-26-20-47-42](https://github.com/machineHan/paper-review-ORCA/assets/154798552/99f209c2-b956-436e-9c9c-975aae5aea3a)
+
 
 <br/><br/>
 
