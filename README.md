@@ -111,17 +111,14 @@ predictor는 embedder와 다르게 sourcec to target transfer에만 집중한다
 
 ### Weight Refining for Downstream Adaptation	
 
-임베더를 사전훈련하고, 이후 부터는 전체 모델(embedder, body, predictor)을 fine-tuning한다. 타겟 로스를 줄이는 방향으로 학습. 그냥 버트 모델 앞뒤로 embedder, predictors Layer가 붙은 모델이라고 생각하면 편함. BERT모델의 확장버전
+임베더를 사전훈련하고, 이후 부터는 전체 모델(embedder, body, predictor)을 fine-tuning한다. 타겟 로스를 줄이는 방향으로 학습. 그냥 소스 모델 앞뒤로 embedder, predictors Layer가 붙은 모델이라고 생각하면 편함.
 
-embedder와 predictor는 body와 일치시키도록 훈련한다 .
 <br/><br/>
 
 ### Evaluation of Distribution Alignment Metrics
 
-Embedder pertaining step 에서 모델 훈련시 
-minimize the distance between the joint distribution of the target embeddings and source embedding 방향으로 훈련한다.
 
-3개의 matrix의 distribution을 측정하는 방법을 3가지 소개한다.
+matrix의 distribution distance를 측정하는 방법을 3가지 소개한다.
 
     1. Pairwise Euclidean distance : 단순히 거리와 범위만을 측정해서 계산
     2. Moment-based maximum mean discrepancy (MMD) : feature mean을 활용하여 계산
@@ -137,5 +134,7 @@ OTDD는 타겟과 소스에 대해 각 클래스 라벨을 in-class feature로 �
 
 
 
-
-우리는 최상의 alignment skill을 제공하는 것이 목표가 아니다. 일반적인 framework를 만드는 것이다.
+## 요약
+	우리는 최상의 alignment skill을 제공하는 것이 목표가 아니다. 일반적인 framework를 만드는 것이다.
+	embedder는 전체적인 진행 이전에 target embedded feature가 source modality와 최대한 유사하게 변형하게끔 pre-train한다.
+ 	predictor는 단순히 우리가 적용하길 윈하는 target domain에 맞는 출력 차원으로 변환하는데 집중하는 단순한 구조다.
