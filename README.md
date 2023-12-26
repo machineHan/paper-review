@@ -137,4 +137,4 @@ OTDD는 타겟과 소스에 대해 각 클래스 라벨을 in-class feature로 �
 ## 요약
 	우리는 최상의 alignment skill을 제공하는 것이 목표가 아니다. 일반적인 framework를 만드는 것이다.
 	embedder는 전체적인 진행 이전에 target embedded feature가 source modality와 최대한 유사하게 변형하게끔 pre-train한다.
- 	predictor는 단순히 우리가 적용하길 윈하는 target domain에 맞는 출력 차원으로 변환하는데 집중하는 단순한 구조다.
+ 	predictor는 우리가 적용하길 윈하는 target domain에 맞는 출력 차원으로 변환하는데 집중하는 단순한 구조다.
