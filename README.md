@@ -51,7 +51,7 @@ ORCA는 총 3단계로 간추릴 수 있다.
 
 우리는 소스모델 기반으로 타겟 모델을 만들 것이다. 즉 소스 데이터로 기반으로 만들어진 타겟 모델을 최적화하는데 타겟데이터로 접근할 것이다.
 
-타겟모델의 타겟 로스 식을 보면 명시적으로 source data에 대한 내용은 없이 target data만으로 이뤄져 있지만 확실히 in-modal, cross-modal transfer가 포함되어있다. 하지만 수학적인 두개의 차이점을 찾기 어려운 점에서, 직관적으로 따지면 cross-modal data가 in-modal데이터에 비해 차이가 있을 것이다.
+타겟모델의 타겟 로스 식을 보면 명시적으로 source data에 대한 내용은 없이 target data만으로 이뤄져 있지만 확실히 in-modal, cross-modal transfer가 포함되어있다. 하지만 수학적인 두개의 차이점을 찾기 어려운 점에서, 직관적으로 따지면 cross-modal data가 in-modal데이터에 비해 차이가 클 것이다.
 
 
 ### Dimensionality Alignment
