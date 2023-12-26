@@ -83,9 +83,13 @@ Body는 위에서 변환한 embedding feature를 가지고 output을 뱉는다. 
 
 이제 body에서 나온 output tensor를 이용하여 target domain에 맞는 output shape를 만들어야한다. 이 작업을 하는 것이 Predictor이다.
 
-Domain task의 종류는 매우 많기에 가장 일반적인 classification에 대해 예를 들겠다. 과정은 다음과 같다.
+task의 종류는 매우 많기에 가장 일반적인 classification로 바꾸는 predictordp 대해서만 예를 들겠다. 과정은 다음과 같다.
+<br/>
 ![KakaoTalk_Photo_2023-12-26-20-47-42](https://github.com/machineHan/paper-review-ORCA/assets/154798552/99f209c2-b956-436e-9c9c-975aae5aea3a)
+<br/>
+이로써, classification clsss에 맞는 k에 대응되는 target output을 구할 수 있다.
 
+predictor는 embedder와 다르게 sourcec to target transfer에만 집중한다. 단순하다.
 
 <br/><br/>
 
@@ -93,11 +97,15 @@ Domain task의 종류는 매우 많기에 가장 일반적인 classification에 
 
 직관적으로, 비슷하지만 다른 모달로 바꾸는것은 쉬워보인다. 당연히 완전히 다른 모달끼리의 변환도 어려워 보인다.
 
-우리는 그래서 소스 모델(바디) 에 들어가기전에 최대한 embedder를 pretrain 하겠다.
-어떤 식으로?  Embedded target feature랑 source featrue가 최대한 같게한다 == 소스와 타겟의 유사도를 확립한다
-타겟 데이터 + 라벨과 소스 데이터 + 라벨을 가지고 각각 joint distribution을 구하고 둘의 차이를 최소화하는 식으로 학습
+우리는 그래서 body에 들어가기전에 target data를 최대한 source modality와 가깝게 만들겠다. 즉, embedder를 pretrain 하겠다. 이러면 embedding target feature가 pre-trained source model이 학습한 feature들을 더 잘 사용할 수 있게 된다.
+
+타겟 데이터 + 타겟 라벨를 target embedder에 넣어서 나온 data와 소스 데이터 + 소스 라벨를 source embedder에 넣어서 나온 data의 joint distribution을 구하고 둘의 차이를 최소화하는 식으로 학습
+>source embedder는 body의 부분이다.
+
+이렇게 할 수 있는 이유는 body의 source embedder는 pre-trained 상태기 때문에, 이미 좋은 feature를 만들 수 있다. 그래서 이 source embedder output을 기준으로 잡아 target embedder가 현재 얼마나 좋은 Feature를 학습했는지 상대적인 값을 측정가능하다.
 
 이 joint distribution distance를 측정하는 방식이 다양하지만 다다음 섹션에서 다루겠다.
+<br/><br/>
 
 <br/><br/>
 
