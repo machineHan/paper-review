@@ -74,6 +74,19 @@ embedder를 통해 embedding feature를 만드는 과정은 다음과 같다.
 
 <br/><br/>
 
+### pretrained Transformer Body
+
+Body는 위에서 변환한 embedding feature를 가지고 output을 뱉는다. 두 입출력 데이터의 차원은 동일하게 (S,D)이다
+<br/><br/>
+
+### Custom Prediction Head
+
+이제 body에서 나온 output tensor를 이용하여 target domain에 맞는 output shape를 만들어야한다. 이 작업을 하는 것이 Predictor이다.
+
+Domain task의 종류는 매우 많기에 가장 일반적인 classification에 대해 예를 들겠다. 
+
+<br/><br/>
+
 ### Embedder Learning for Distribution Alignment
 
 직관적으로, 비슷하지만 다른 모달로 바꾸는것은 쉬워보인다. 당연히 완전히 다른 모달끼리의 변환도 어려워 보인다.
