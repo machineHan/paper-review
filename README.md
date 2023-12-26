@@ -27,10 +27,10 @@ Physical, life science, healthcare, finance 가 그러한 분야이다. 왜 학�
 키 아이디어는 task agnostic fune-tuning 전에 인풋데이터를 task-specific data alignment를 하는것이다.
 이렇게 하면 B모달이 A모달로 훈련된 모델의 가중치를 왜곡없이 잘 쓸 수 있다. 즉 학습된 A modal feature를 embedded feature of B가 사용 가능하다.
 
-ORCA는 총 3단계로 간추릴 수 있다.
-1. target input을 body에서 사용할 수 있도록 메핑시키는 Embedding network 
-2. embedding network는 embedded target이랑 source reference와의 distributional distance가 최소화 되로록 훈련한다.
-3. Fine-tuned entire target model
+    ORCA는 총 3단계로 간추릴 수 있다.
+    1. target input을 body에서 사용할 수 있도록 메핑시키는 Embedding network 
+    2. embedding network는 embedded target이랑 source reference와의 distributional distance가 최소화 되로록 훈련한다.
+    3. Fine-tuned entire target model
 
 ORCA의 휴율성을 너비(다양한 환경에서의 성능 = generality), 깊이(특정 테스크에서의 성능 = competitive performance), 기존의 있던 다른 기술과의 비교로 판별하겠다.
 
