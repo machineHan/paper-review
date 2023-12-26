@@ -8,7 +8,7 @@ Align-then-refine workflow를 따른다.
 
 우선 ORCA는 인풋 모달을 pretrained model의 modal에 맞게 embedded feature distribution을 만든다
 그리고 pretrained model은 만들어진 embedded feature distribution을 가지고 fine-tuning한다.
-
+<br/><br/>
 ## Introduction
 Pretrained model을 fine-tuning하여 사용하는 것은 language, vision, speech등 여러분야에서 뛰어난 성능을 거뒀다. 그리고 이 transfer learning은 모두 동일 modal내에서의 전이만을 다루고 있다.
 
@@ -35,7 +35,7 @@ ORCA는 총 3단계로 간추릴 수 있다.
 
 <br/><br/>ORCA의 휴율성을 너비(다양한 환경에서의 성능 = generality), 깊이(특정 테스크에서의 성능 = competitive performance), 기존의 있던 다른 기술과의 비교로 판별하겠다.
 
-
+<br/><br/>
 ## ORCA Workflow
 
     타겟 도메인 : 우리가 적용하고싶은 테스크
@@ -53,7 +53,7 @@ ORCA는 총 3단계로 간추릴 수 있다.
 
 타겟모델의 타겟 로스 식을 보면 명시적으로 source data에 대한 내용은 없이 target data만으로 이뤄져 있지만 확실히 in-modal, cross-modal transfer가 포함되어있다. 하지만 수학적인 두개의 차이점을 찾기 어려운 점에서, 직관적으로 따지면 cross-modal data가 in-modal데이터에 비해 차이가 클 것이다.
 
-
+<br/><br/>
 ### Dimensionality Alignment
 
 ORCA는 크게 3부분으로 나뉜다. Embedder, body, predictor.  하나하나 뜯어보겠다
@@ -72,7 +72,7 @@ embedder를 통해 embedding feature를 만드는 과정은 다음과 같다.
 ![KakaoTalk_Photo_2023-12-26-20-34-14](https://github.com/machineHan/paper-review-ORCA/assets/154798552/d669c5a0-1a3a-4b2b-9c49-6c0d41dcf788)
 
 
-
+<br/><br/>
 
 ### Embedder Learning for Distribution Alignment
 
@@ -84,12 +84,14 @@ embedder를 통해 embedding feature를 만드는 과정은 다음과 같다.
 
 이 joint distribution distance를 측정하는 방식이 다양하지만 다다음 섹션에서 다루겠다.
 
+<br/><br/>
 
 ### Weight Refining for Downstream Adaptation	
 
 임베더를 사전훈련하고, 이후 부터는 전체 모델(embedder, body, predictor)을 fine-tuning한다. 타겟 로스를 줄이는 방향으로 학습. 그냥 버트 모델 앞뒤로 embedder, predictors Layer가 붙은 모델이라고 생각하면 편함. BERT모델의 확장버전
 
 embedder와 predictor는 body와 일치시키도록 훈련한다 .
+<br/><br/>
 
 ### Evaluation of Distribution Alignment Metrics
 
