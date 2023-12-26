@@ -59,7 +59,18 @@ ORCA는 총 3단계로 간추릴 수 있다.
 ORCA는 크게 3부분으로 나뉜다. Embedder, body, predictor.  하나하나 뜯어보겠다
 
 Custom Embedding Network, Custom Prediction Head 
-: 둘다 패드에 정리한거 참고
+
+embedder는 target dimension과 source dimension을 맞추며, 변환된 embedding feature가 pre-train model의 학습된 feature를 잘 활용 할수 있도록 한다(이는 distributional distance의 측정으로 계산)
+
+	> x -> x’
+	x의 차원은 (X,Y,Cin)
+	x’의 차원은 (S,D,1), D = Cout
+
+embedder는 single cnn layer이다. 주요 파라미터는 k로 stride, kernel size를 나타낸다.
+embedder를 통해 embedding feature를 만드는 과정은 다음과 같다.
+
+![KakaoTalk_Photo_2023-12-26-20-30-03](https://github.com/machineHan/paper-review-ORCA/assets/154798552/de56c559-0dcc-43b4-8495-2829afb80348)
+
 
 
 ### Embedder Learning for Distribution Alignment
