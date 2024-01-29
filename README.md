@@ -57,10 +57,12 @@ DNN architecture는 파라미터가 엄청 많은 구조이다!
 
 > GD : 모든 데이터를 가지고 gradient 를 계산해 sum up loss를 가지고 모델을 업데이트
 <br/><br/>
+
 사용하는 용량이 너무큼, shooting이 없음
 
 > SGD : 데이터의 부분(minibatch)를 가지고 수행
 <br/><br/>
+
 Shooting, data redundancy를 효율적으로 처리
 
 
