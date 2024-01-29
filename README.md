@@ -25,21 +25,25 @@ GMM-HMM은 동기적 요소가 존재하지 않고, 각 프로세스가 독립�
 SGD > sequential process : forwardness, backdrop
 (sum up in server with computed gradient from each GPU. If each GPU has different training speed, wait until entire GPU data are arrvied > synchronous cost가 높다)
 
+<br/><br/>
+
 ASGD > Calculate gradient : parallel    |        update model : Asynchronously
 
+
+<br/><br/>
 
 BP에서 batch size는 performance, efficiency 관점에서 중요한 요소이다. (BP가 minibatch based임)
 각 GPU, CPU에서의 communication cost가 크다.
 
 
 
-2.1 Deep neural network used in speech recognition
+### 2.1 Deep neural network used in speech recognition
 
 DNN architecture는 파라미터가 엄청 많은 구조이다!
 
 
 
-2.2 stochastic gradient descent(SGD)
+## 2.2 stochastic gradient descent(SGD)
 
 GD : 모든 데이터를 가지고 gradient 를 계산해 sum up loss를 가지고 모델을 업데이트
 사용하는 용량이 너무큼, shooting이 없음
@@ -49,7 +53,7 @@ Shooting, data redundancy를 효율적으로 처리
 
 
 
-2.3 Analysis of minibatch size
+## 2.3 Analysis of minibatch size
 
 Training cost를 줄이기 위해 직관적인 방법은 minibatch size를 늘리는것 > 하지만 잘 작동하지 않음
 일부에서는 minibatch size가 커졌는데도 training cost가 증가하는 부분이 있음 (특수한 경우)
@@ -57,7 +61,7 @@ Training cost를 줄이기 위해 직관적인 방법은 minibatch size를 늘�
 GPU의 성능을 넘어선 batch size는 안하는것만 못함 > little speed up , degrade performance significantly
 
 
-3 Asynchronous SGD
+## 3 Asynchronous SGD
 
 SGD variation algorithm
 Server(cpu)-client(gpu) architecture
@@ -76,17 +80,18 @@ SGD는 병렬적으로 처리된 각 GPU grdient를 통합해야하므로, 모�
 Communication cost는 큰 변화 없다. 그래서 여전히 bandwidth 의 한계에 부딛힌다.
 
 
-4. Experiments
+## 4. Experiments
 
 ASGD를 가지고 HMM-DNN을 학습할 때, 초기에는 작은 배치로 부터 시작해 진행 할 수록 배치사이즈가 커지게끔 훈련함
 
 ASGD는 large minibatch에서 강하고, small minibatch에서는 더 약하해진다. Small minibatch는 잦은 모델 업데이트 때문에 그러함. > communication cost때문에, ASGD의 문제가 아니라 small minibatch 자체의 문제임
 Small minibatch는 학습 초기에 조금만 사용되므로, 실험에서 small minibatch의 영향력은 적을 것이다.
 
-ASGD가 통신 비용을 줄여주지만 여전히 bandwidth가 bottleneck이다. ?? 왜?? 동기화 비용만 줄인거 아님?
-내 생각은 training cost를 잘못 명시한거 같음
-통신 비용에 대한 해결책은 딱히 없었음
+ASGD가 통신 비용을 줄여주지만 여전히 bandwidth가 bottleneck이다.
 
+
+
+## 요약
 
 Large minibatch로 업데이트 횟수 자체를 줄여 통신 비용을 감소시킴.
 ASGD는 모든 미니배치에 대해 서버의 클라이언트 모델만 업데이트 시키고, 일정량의 그레디언트가 쌓이면 서버 모델을 업데이트함 > 업데이트 수 줄음 > communication cost 줄음 > training cost 줄음
@@ -94,8 +99,12 @@ ASGD는 모든 미니배치에 대해 서버의 클라이언트 모델만 업데
 
 
 ASGD의 단점 : 여러 버전의 모델을 가지고 집계해 업데이트함, accurancy 가 굉장히 낮음, staleness : 오래되어 이상한
-ex ) GPU1 : model1 , GPU2 : model3  | 각 번호는 미니배치가 몇번 적용된 모델인지를 나타냄.
+
+> ex ) GPU1 : model1 , GPU2 : model3  | 각 번호는 미니배치가 몇번 적용된 모델인지를 나타냄.
 gradient를 집계한다는 것은 동일한 버전하에 의미가 있다. 극단적인 경우 gradient를 집계 시 0으로 수렴되는 상황이 나타날 수 있다. 동일한 버전에서는 서로의 방향이 비슷한 경우가 대부분임. 하지만 버전이 다르면 방향이 정반대일 수 있음
+
+
+
 여전히 communication cost에 대한 문제 존재
 
 Distribute leaning 에서 크게 communication cost, synchronization의 두 관점에서 평가한다. ASGD는 synchronization에 대해 집중한 알고리즘으로 이에 대해 성능 향상도 애매하고, 여러가지 문제를 해결 못한 모델이다.
