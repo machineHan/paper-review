@@ -1,5 +1,6 @@
 # Asynchronous-stochastic-gradient-descent
 
+<br/><br/>
 
 ## Abstract
 
@@ -7,6 +8,8 @@ Dnn을 활용한 speech recognition model이 좋은 preformance를 거둠 기존
 하지만 DNN의 엄청난 양의 파라미터로 인해 training cost가 크다 > 오래걸린다.
 게다가 병렬화도 어려운 상황이다. > SGD의 빈번한 모델 업데이트, 모델 업데이트의 의존성
 그리하여 ASGD를 제시 > 병렬적으로 gradient 계산후, 비동기적으로 모델 업데이트
+
+<br/><br/>
 
 ## 1. Introduction
 
@@ -25,23 +28,25 @@ GMM-HMM은 동기적 요소가 존재하지 않고, 각 프로세스가 독립�
 SGD > sequential process : forwardness, backdrop
 (sum up in server with computed gradient from each GPU. If each GPU has different training speed, wait until entire GPU data are arrvied > synchronous cost가 높다)
 
-<br/><br/>
+<br/>
 
 ASGD > Calculate gradient : parallel    |        update model : Asynchronously
 
 
-<br/><br/>
+<br/>
 
 BP에서 batch size는 performance, efficiency 관점에서 중요한 요소이다. (BP가 minibatch based임)
 각 GPU, CPU에서의 communication cost가 크다.
 
 
+<br/><br/>
 
 ### 2.1 Deep neural network used in speech recognition
 
 DNN architecture는 파라미터가 엄청 많은 구조이다!
 
 
+<br/><br/>
 
 ## 2.2 stochastic gradient descent(SGD)
 
@@ -52,6 +57,7 @@ SGD : 데이터의 부분(minibatch)를 가지고 수행
 Shooting, data redundancy를 효율적으로 처리
 
 
+<br/><br/>
 
 ## 2.3 Analysis of minibatch size
 
@@ -60,6 +66,7 @@ Training cost를 줄이기 위해 직관적인 방법은 minibatch size를 늘�
 그리고 minibatch size는 GPU의 성능에 의해 상향선이 정해진다.
 GPU의 성능을 넘어선 batch size는 안하는것만 못함 > little speed up , degrade performance significantly
 
+<br/><br/>
 
 ## 3 Asynchronous SGD
 
@@ -79,6 +86,7 @@ SGD는 병렬적으로 처리된 각 GPU grdient를 통합해야하므로, 모�
 
 Communication cost는 큰 변화 없다. 그래서 여전히 bandwidth 의 한계에 부딛힌다.
 
+<br/><br/>
 
 ## 4. Experiments
 
@@ -89,6 +97,7 @@ Small minibatch는 학습 초기에 조금만 사용되므로, 실험에서 smal
 
 ASGD가 통신 비용을 줄여주지만 여전히 bandwidth가 bottleneck이다.
 
+<br/><br/>
 
 
 ## 요약
