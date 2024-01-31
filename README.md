@@ -13,7 +13,7 @@
 즉 모델 배포 과정에서 큰 모델이 적합하지 않아, 작은 모델을 뿌릴껀데 최대한의 성능을 낼 수 있도록 큰 모델이 학습한 generalization을 작은 모델에게 tansfer하는 것을 Knowledge distillation 라고 한다
 <br/>
 
-시초의 knowledge distillation은 선생 모델의 아웃풋을 가지고 만든 2차 정보인 softened output을 가지고 예측한 것의 이외의 것에 대한 정보를 포함한 것을 가지고 학생을 학습시킨다.
+시초의 knowledge distillation은 선생 모델의 아웃풋을 가지고 만든 2차 정보인 softened output을 가지고 예측한 것과 그 이외의 것에 대한 정보를 포함한 정보를 가지고 학생을 학습시킨다.
 <br/>
 > Ex) 개로 예측한 선생의 output layer의 값을 가지고 softened하여 개이외의 타겟값에 대한 정보를 좀더 크게 해석한다. 여기서 개 이외의 정보도 학생을 가르치는데 사용되는 2차 정보가 된다.
 
