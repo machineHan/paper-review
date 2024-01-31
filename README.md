@@ -80,7 +80,7 @@ Gradient Sparsification <br/>
 
 
 주어진 local gradient accumlation에서 learning rate를 스케일 하면 미니배치를 늘리는 것과 동일한 효과를 본다.
-<br/>
+<br/><br/>
 
 
 ### 3.2 improving the local gradient accumulation
@@ -89,7 +89,7 @@ Gradient Sparsification <br/>
 <br/>
 
 
-Momentum correction
+#### Momentum correction
 <br/>
 
 
@@ -108,7 +108,7 @@ momemtum을 dense에 대한 것이기 때문에 sparse update에 적용하게 �
 <br/>
 
 
-Local Gradient Clipping
+#### Local Gradient Clipping
 <br/>
 
 
@@ -121,7 +121,7 @@ Gradient의 L2 norm값이 임계치를 넘을 때마다 rescale
 
 하지만 우리는 sparse update여서(accumulate gradient over iteration independently) 집계 전에 이뤄져야한다
 그리고, 여기서 사용되는 임계치는 모델의 sparse update에 사용되는 threshold에 N의 -1/2승 하여 사용한다.
-<br/>
+<br/><br/>
 
 
 
@@ -132,10 +132,7 @@ Sparse update 자체가 지연된 데이터를 가지고 나중에 업데이트�
 <br/>
 
 
-Momentum Factor Masking
-<br/>
-
-
+#### Momentum Factor Masking
 Implicit momentum : 비동기적 흐름에 의해 생기는 staleness을 칭함
 <br/>
 
@@ -147,8 +144,7 @@ Implicit momentum : 비동기적 흐름에 의해 생기는 staleness을 칭함
 
 
 
-Warm-up Training
-<br/>
+#### Warm-up Training
 
 
 Large minibatch SGD에서 봤듯이, 초기 훈련상태의 모델은 파라미터가 공격적으로, 극단적이게 움직이는 경우가 많다. 여기에 스케일을 때리는 것은 무모하다.
@@ -167,7 +163,7 @@ Warm-up을 하면 덜 극단적으로 모델이 변하는 것 뿐만 아니라, 
 
 
 결과는 좋다. 속도, 정확도 모두 올라가는 task도 있고, 정확도는 일부 떨어지지만 compression ratio가 굉장히 많이 올라가는 경우도 있다
-<br/>
+<br/><br/>
 
 ## summary 
 
