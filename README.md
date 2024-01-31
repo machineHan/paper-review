@@ -43,11 +43,14 @@ ASGD는 동기적 요소를 일정수준 배재하고 training cost를 얻는 �
 
 <br/>
 
-    SGD > sequential process : forwardness, backdrop
-    (sum up in server with computed gradient from each GPU. If each GPU has different training speed, wait until entire GPU data are arrvied > synchronous cost가 높다)
+> SGD > sequential process : forwardness, backdrop
+
+> sum up in server with computed gradient from each GPU. If each GPU has different training speed, wait until entire GPU data are arrvied > synchronous cost가 높다
+
+<br/>
 
   
-    ASGD > Calculate gradient : parallel    |        update model : Asynchronously
+> ASGD > Calculate gradient : parallel    |        update model : Asynchronously
 
 
 BP에서 batch size는 performance, efficiency 관점에서 중요한 요소이다. (BP가 minibatch based임)
