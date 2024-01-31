@@ -70,12 +70,18 @@ Computational cost가 작게 줄어듬
 <br/>
 
 
-##4.2.2 Structure Parameter Update via Variance Reduced Policy Gradient
+## 4.2.2 Structure Parameter Update via Variance Reduced Policy Gradient
 
 PEG는 forward pass를 통해 gradient를 추정할 수 있다.  Complete sparse상황에서 PEG로 로스를 구하는 것은 효율적으로 진행된다. 하지만 기존 PEG는 다른 논문에서 다룬바와 같이 높은 분산을 가지고 있다.
 <br/>
 
-그래서 VR-PEG를 제안한다. VR-PEG는 분산이 제한된다
- 이유는 이해 못하겠음
-Abstract 에서 VR-PEG는 2개의 forward pass만을 사용한다 했는데 그것역시 확인하지 못함.
-강화학습에 대한 내용
+그래서 VR-PEG를 제안한다. VR-PEG는 분산이 제한하여, 더 좋은 결과를 만들 수 있다.
+
+## summary
+
+기존의 Sparsification이 부족한 점을 짚고, 확실한 Sparsification를 하여 훈련 코스트를 줄이는 방식이다.
+<br/>
+
+이전의 Sparsification은 0에 가까운 값이지 0이 아니기에 네트워크를 pass하는 모든 과정이 dense하게 진행되어 큰 의미가 없다. 하지만 이렇게 확실한 Sparsification를 한다면 조건에 따라 다르지만 확실하게 Pass가 줄어드는 부분이 발생한다.
+
+<br/>
