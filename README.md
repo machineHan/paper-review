@@ -131,7 +131,8 @@ Reward hacking은 에이전트가 일관되지 않지만 큰 보상을 얻는 �
 
 Multimodal 뿐만 아니라 domain-specific에서도 가능하다.
 
-  <br>
+<br>
+
 ## summary
 ESPER는 pretrained-language generator에 있는 지식의 language generation capability와 CLIP이 정렬시킨 multimodal to text를 supervision없이 결합시킨다. 이 과정에서 강화학습이 사용된다.  
 ESPER의 multimodal prompt tuning을 통해서 pretrained language model의 진행 시킨 prompt쪽으로 확장시킬 수 있다.  
