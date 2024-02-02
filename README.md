@@ -50,7 +50,8 @@ Low-rank > full-rank ,  full-rank > low-rank  둘다 글로벌 모델에서 일�
 
 Row-rank factorization을 시도하는 첫 논문임.  
   
-FEDHM consists of three main components, i.e., (1) local factorized training, (2) model shape alignment, and (3) model aggregation.
+FEDHM consists of three main components, i.e., (1) local factorized training, (2) model shape alignment, and (3) model aggregation.  
+
 <br>
 
 ## 2. Federated Learning on Heterogeneous Devices
