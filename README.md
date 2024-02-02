@@ -4,12 +4,12 @@
 
 논문에 들어가기 앞서, commonsense reasoning와 Maximum likelihood estimator, prompt engineering/tuning 에 대해 설명하겠다.  
 
-'Commonsense Reasoning' 이란 아주 당연한 것에 대한 추론이다. 사람이 하는 행동에서 딱히 고민하지 않고 수행되는 것이다. 하지만 이를 기계가 인식하도록 하는데는 엄청난 수고가 든다.
+`Commonsense Reasoning` 이란 아주 당연한 것에 대한 추론이다. 사람이 하는 행동에서 딱히 고민하지 않고 수행되는 것이다. 하지만 이를 기계가 인식하도록 하는데는 엄청난 수고가 든다.
 > 예를 들어 우리는 물을 흘리면 큰 고민 없이 주변에 물을 흡수 가능한 소재로 바닥을 닦고 이를 버리거나 짜서 말린다. 하지만 이를 기계에게 실행하기에는 엄청난 수고가 든다.
 
 이하 CSR로 줄여서 표기하겠다.  
 
-'Maximum likelihood Estimator(MLE)' 는 likelihood가 최대인 모수를 찾아 최적화 시키는 방식에 일종이다.  
+`Maximum likelihood Estimator(MLE)` 는 likelihood가 최대인 모수를 찾아 최적화 시키는 방식에 일종이다.  
 > 즉,  어떤 확률 분포에서 주어진 데이터가 있을 때, 데이터를 가지고  모수(파라미터)를 찾음
 
     Bayes’ rule : P(Y|X) = P(Y) * P(X|Y) / P(X)  
@@ -22,7 +22,7 @@ MLE : Likelihood = P(X|Y)가 최대인 지점을 찾자, 관측결과에 민감�
 MAP : posterior = P(X|Y)P(X)가 최대인 지점을 찾자  
 
 
-'Prompt engineering'이란 제공된 언어모델 인터페이스에서 “유저가 원하는 정확한 정보”를 위해 사전적으로 입력하는 입력 문장  
+`Prompt engineering`이란 제공된 언어모델 인터페이스에서 “유저가 원하는 정확한 정보”를 위해 사전적으로 입력하는 입력 문장  
 e.g.  GPT한테  질문하기전에, ‘너는 나의 머신러닝 선생님이야’ , ‘이런 구조로 알려줘’ 등등 먼저 입력하는 과정을 뜻함  
 
 Prompt tuning이란 언어모델을 fine-tuning하긴 하는데 주어진 입력 프롬프트에 대해 원하는 답변을 생성하도록 언어모델을 국소적으로 fine-tuning한다.  
