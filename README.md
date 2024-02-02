@@ -31,7 +31,7 @@ e.g. 질문에 대한 대답을 내가 원하는 대답을 하게끔 fine-tuning
 Fine-tunin은 downstream task를 위해 추가적인 대규모 훈련을 가해 특화된 모델을 만드는 과정  
 
 
-
+  
 ## Abstract
 
 Language model은 CSR이 가능하다. 
@@ -48,7 +48,7 @@ ESP라는 새로운 데이터셋을 포함한 여러가지 benchmark에 대해�
 > ESP : 하나의 이미지에 대한 여러가지 text가 포함된 multimodal dataset
 
 > ESPER = Extending Sensory PErception with Reinforcement learning, language model의 인지능력을 강화학습을 통해 multimodal task까지 확장시키는 Framework
-
+  
 ## Introduction
 
 새로운 multimodal환경에서 데이터를 수집하는 건 어렵다. 
@@ -73,7 +73,7 @@ ESPER는 동결된 language 모델을 사용하고,  visual feature을 language 
 첫째 annotation이 필요없다. 
 둘 째, 강화학습은 일반화능력을 유지한다. 우리 과정중 forzen language model 을 사용하는데, 이 방식이 reasoning capacites를 유지시키는 데 큰 역할을 한다.  
 우린 maximum likelihood prompt tuning과 decoding-time method를 통해 language model에 이미지를 넣는 이전의 두 기술과 비교해보겠다.   
-
+  
 ## 2. Method 
 
 ESPER의 3가지 구성요소
@@ -86,16 +86,16 @@ ESPER의 3가지 구성요소
 backprop를 위해 대부분의 아키텍처를 지나지만 업데이트는 오직 encoder에서만 행해진다  
 
 보상은 CLIP에서 생성된 이미지/텍스트 유사도에 의존한다.  
-
+  
 ## 2.1 Architecture
-
+  
 ### CLIP  
 
 2개의 CLIP이 존재한다. CLIP-I/T  
 CLIP-I는 fixed CLIP image encoder로 이미지로 부터 feature vector를 추출한다.  
 CLIP-T는 fixed CLIP text encoder로 언어 모델이 생성한 텍스트에 대한 백터를 만든다  
 마지막으로,  CLIP-I/T에서 나온 백터를 가지고 유사도를 가지고 강화학습을 진행한다.  
-
+  
 ### Encoder
 
 ESPER에서 유일하게 훈련되는 부분이다.  
@@ -112,9 +112,9 @@ Autoregressive language model은 이전의 토큰들의 정보를 가지고 다�
   
 쉽게 말하자면, 기존의 언어모델은 이전 토큰에 대한 값들에 대해서만 사용해서 다음 텍스트 토큰에 대해 계산했다. 
 하지만 우린 encoder output과 위의 방식을 concate해서 likelihood를 계산한다.  
-
+  
 ## 2.2 Training
-
+  
 ### Reinforcement Learning
 강화학습을 생성 텍스트 - 이미지에 대한 코사인 유사도를 가지고 행하겠다. 강화학습 관점에서 보면, 텍스트 생성모델은 Policy이다.  우리는 보상 모델로 PPO-clip을 사용하겠다. 그리고 RL policy와 기존의 policy 사이의 KL distance를 제한해 생성 텍스트의 퀄리티를 보장한다.  
 
@@ -123,13 +123,13 @@ Reaward는 논문에 정의된 식 4번과 같이 정의 된다. 여기서의 �
 ### Language Model Stability
 Reward hacking은 에이전트가 일관되지 않지만 큰 보상을 얻는 텍스트를 발견했을 때, 주로 발생한다. 즉, 성능에 악영향을 끼치는데 좋은 보상을 받는 데이터를 발견했을 때이다.  
 훈련 과정을 안정시키기 위해 보조 reward를 사용한다.  
-첫째, 우리 모델에서 나온 텍스트의 likelihood와 완전 쌩 GPT-2에서의 likelihood를 통해 KL distance를 구한다. 이를 ESPER모델의 텍스트 생성 능력을 유지한다. 그리고 반복되는 어구에 높은 likelihood를 잘 못 부여하는 일이 종종 발생하여, 이를 막기 위해 repetation  penalty를 만들었다.  
+첫째, 우리 모델에서 나온 텍스트의 likelihood와 완전 쌩 GPT-2에서의 likelihood를 통해 KL distance를 구한다. 이를 ESPER모델의 텍스트 생성 능력을 유지한다. 그리고 반복되는 어구에 높은 likelihood를 잘 못 부여하는 일이 종종 발생하여, 이를 막기 위해 repetation  penalty를 만들었다. 
   
 ## 2.3 Adaptation on Pretrained Language Model
 
 Multimodal 뿐만 아니라 domain-specific에서도 가능하다.
 
-
+  
 ## summary
 ESPER는 pretrained-language generator에 있는 지식의 language generation capability와 CLIP이 정렬시킨 multimodal to text를 supervision없이 결합시킨다. 이 과정에서 강화학습이 사용된다.  
 ESPER의 multimodal prompt tuning을 통해서 pretrained language model의 진행 시킨 prompt쪽으로 확장시킬 수 있다.  
