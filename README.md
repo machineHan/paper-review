@@ -118,8 +118,9 @@ spectral initialization (SI) and regularizing with Frobenius decay (FD)로 low-r
 <br>
 
 ## 3. Theoretical Analysis
+<br>
 
-Computational Complexity and Model Size
+### Computational Complexity and Model Size
 
 기존의 FC, Conv에 low-rank factorization을 수행한 결과 파라미터수가 줄어들었다.
 
@@ -128,6 +129,8 @@ Computational Complexity and Model Size
 통신 비용과 파라미터수는 비례하다. 그러므로 파라미터수가 낮아졌으므로 통신 비용또한 줄었다.
 
 통신, 계산 비용 모두 줄음
+
+<br>
 
 ### Convergence Analysis
 
@@ -139,7 +142,7 @@ SG의 모멘텀도 특정 상수에 하한이 있다.
 
 이 2가지 가정을 통해 분석을 완성함.
 
-
+<br>
 
 ## summary
 
