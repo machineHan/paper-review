@@ -109,6 +109,8 @@ Initialization and Regularization of Factorized Layers 논문에서 다룬 FL에
 
 spectral initialization (SI) and regularizing with Frobenius decay (FD)로 low-rank model을 초기화하면 향상된 결과를  얻을 수 있다.
 
+<br>
+
 ### 2.3 Model Shape Alignment and Aggregation
 
 각 클라이언트의 factorized local model을 가지고 rank(행렬의 기저 수) ratio와 softmax temperature을 이용한 softmax를 통해 global model을 업데이트 시킨다.
