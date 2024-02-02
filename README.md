@@ -153,6 +153,4 @@ ESPER의 multimodal prompt tuning을 통해서 pretrained language model의 진�
 
 이러면 이미지를 통한 multimodal prompt 완료
 
-Integrated
-Infrastructure
 
