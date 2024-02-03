@@ -6,9 +6,7 @@
 Global loss function 이게 우리가 항상 사용하던 손실함수이다. 출력 레이어의 그레디언트를 반환에 이를 통해 BP로 히든 레이어의 가중치를 조정한다.  
 
 우리는 layer-wise training 방법을 소개한다. layer별로 로스를 계산하는 것  
-> Single-layer subnetwork and two different supervised loss function을 이용해 히든 레이어에 대한 local error signal 를 생성함.
-
-> two different supervised loss function : Sim loss, pred loss
+> Single-layer subnetwork and two different supervised loss function을 이용해 히든 레이어에 대한 local error signal 를 생성함.  two different supervised loss function : Sim loss, pred loss
 
 그리고 논문에서 biologically plausible 이라는 단어를 정말 많이 쓰는데, 일반적인 사람은 저렇게 안한다 라는 식으로 생각하면 될듯 > 인간이 자연스럽게 하는 방식이 좀더 효율적이다  
 
