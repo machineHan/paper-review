@@ -45,6 +45,7 @@ synthetic(합성) gradient(=>approximation) 을 이용하는 방법도 있다.
 뇌과학에서 유사성 분석  
 
 우리가 사용할 sim loss를 최대한 biologically plausible version으로 만들겠다. 그에 필요한 신경과학에서의 유사도 분석방법 
+
 <br>
 
 ### Similarity Measures in Machine Learning
