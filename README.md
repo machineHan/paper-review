@@ -50,7 +50,7 @@ end-to-end란 speech task에서 특별이 사용된다. speech data에 대한 �
 
 그리고 speech unit과 비슷하게 raw image 대신 image unit을 사용하겠다.  
 이미지를 토큰으로 만들고 토큰에 Vector Quantization를 해서 image unit을 만들었다. 
-이렇게 토큰을 만들어 사용하면 im2sp model이 언어번역하는 NLP task와 같아진다. 우리 시스템은 결국 image unit을 받아 speech unit을 뱉는 language translation과 비슷하다.  
+이렇게 토큰을 만들어 사용하면 im2sp model이 언어번역하는 NLP task와 같아진다. 우리 시스템은 결국 image token을 받아 speech token을 뱉는 NPL translation과 비슷하다.  
 
 입력 정보가 모두 토큰이기에 입/출력값이 모두 이산화 되어 모델훈련 + 저장공간 모두 효율적이다. 
 효율적인데 image-text의 학습된 정보를 사용해서 im2sp의 성능도 좋아짐!  
