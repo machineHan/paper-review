@@ -1,4 +1,4 @@
-# paper-review-ORCA
+# Cross-Modal Fine-tuning : Align then Refine
 
 ## abstract
 Pre trained model을 fine-tuning하여 사용하는 것은 잘 개척된 분야에서는 아주 큰 성공을 거뒀다. 하지만 pretrain model이 적은 분야에서는 큰 이점이 없다. 
