@@ -140,5 +140,12 @@ Image unit을 만드는 pre-trained ViT-VQGAN을 사용한다. 하지만 앞에�
 VLM에서 가저온 text decoder를 그대로 사용 가능했던 이유는 speech unit이 언어적인 정보를 특별나게 가지고 있기 때문이다. 그래서 아무 변환없이 사용해도 좋은 성능을 볼 수 있었다.  
 게다가 pre-trained Git model을 사용해서 language capability역시 받을 수 있어 더 좋은 결과를 냈다.  
 
-이 논문에서 핵심은 image/speech unit을 통해 NLP-like process를 해, speech process 에서 생기는 큰 문제점들을 우회했다는 점이다.
+이 논문에서 핵심은 image/speech unit을 통해 NLP-like process를 해, speech process 에서 생기는 큰 문제점들을 우회했다는 점이다.  
+
+이런 vision-language pre-train strategy를 통해 성능향상 뿐만 아니라, 추가적으로 도입한 image token을 통해 memory적인 이득을 많이 취하였다.  
+<br>
+
+이전에 다뤘던 Cross modality 논문에서 말한 부분이 생각이 났다.  
+
+그 논문에서 Cross modality가 좋은 이유는 덜 개척된 분야에서 이미 발전된 분야에 모델을 가지고 사용하는 것이다 좋다는 라는 설명이 있었다. 딱 이 논문이 speech data의 한계를 지적하며 VLMs의 능력을 빌려오는 과정이 아닌가.
 
