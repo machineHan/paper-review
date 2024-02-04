@@ -3,7 +3,7 @@
 ## Abstract
 
 논문 제목 그대로 실용적이며 효율적인 이미지-스피치 캡션 모델을 만드는 방법에 대해 소개한다.  
-먼저 비전언어모델의 knowledge와 image comprehension을 im2sp로 가져온다. 그리고 im2sp의 출력을 discretized speech unit으로 설정한다.  
+먼저 vision-language model의 knowledge와 image comprehension을 im2sp로 가져온다. 그리고 im2sp의 출력을 discretized speech unit으로 설정한다.  
 
 Speech unit은 언어적 정보가 담겨있다. 이런 speech unit의 특성이 Im2sp의 spoken language modeling과 비전언어 모델의 language modeling capability을 통합하게 한다.  
 
