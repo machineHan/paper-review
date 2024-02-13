@@ -41,11 +41,11 @@ Data fusing은 멀티모달 감정분석의 주된 접근방식이다.
 > Data fusing : merge data with different shapes, scales, modalities, or information
 
 Data fusing을 통해 합쳐진 정보는 부족한 정보를 보완에 보다 풍부한 정보를 제공한다. 초기에는 data fusing이 다른 모달들을 concatenated 하는 방식이였지만, 딥러닝 아키텍처의 발전으로 다양한 fusing methodologies가 제공되고 있다. Data fusing method는 크게 2개로 분류된다.
-- early fusing : 네트워크에 input layer 근처에서 fusing <br> low-level에서 바로 fusing하고, 합쳐진 데이터를 가지고 추출한다.
+- early fusing : 네트워크에 input layer 근처에서 fusing  low-level에서 바로 fusing하고, 합쳐진 데이터를 가지고 추출한다.
 
-- late fusing : 네트워크에 output layer 근처에서 fusing <br> hidden에서 추출된 각 modal feature들을 fusing한다. 
+- late fusing : 네트워크에 output layer 근처에서 fusing  hidden에서 추출된 각 modal feature들을 fusing한다. 
 
-하지만 최근의 audio-visual 정보를 적게 사용하는 multimodal sentiment analysis는 그들의 text-dependent 특성으로 인해 제한된다.  
+하지만 최근의 audio-visual 정보를 적게 사용하는 multimodal sentiment analysis는 그들의 text-dependent 특성으로 인해 한계에 부딪힌다.
 
 Raw video에 대한 정확한 text scripts를 얻는 것을 비싸기에,  real world multimodal sentiment analysis는 제한된다.  
 대부분의 multimodal sentiment analysis는 훈련 데이터에 텍스트가 포함돼 있다. 
@@ -54,9 +54,9 @@ Text가 없는 Audio- sentiment analysis는 낮은 성능을 보인다.
 
 우리가 제안하는 HMTL은  audio-image sentiment analysis의 성능을 높이기 위해,  훈련에서 text modality를 사용한다. (test시에만 audio-image만 사용)
 
-HMTL은 서로 다른 characteristic과 distribution을 가진 source/target data를 가지고 훈련하는 inter domain training method이다.  
+HMTL은 서로 다른 characteristic과 distribution을 가진 source/target data를 가지고 훈련하는 inter-domain training method이다.  
 
-우린 멀티모달 상황에서도 text-only model이 높은 성능을 보인 다는 점에 주목합니다. 그래서 우리는 text-only model의 풍부한 knowledge를 audio-image model에 transfer learning 한다.  즉 text modality가 source가 되고, audio-image modality가 target이 된다.
+우린 멀티모달 상황에서도 text-only model이 높은 성능을 보인 다는 점에 주목한다. 그래서 우리는 text-only model의 풍부한 knowledge를 audio-image model에 transfer learning 한다.  즉 text modality가 source가 되고, audio-image modality가 target이 된다.
 
 HMTL은 다음과 같이 진행된다.
 Unimodal sentiment analysis model이 텍스트만 가지고 훈련된다. 이 모델은 훈련할 때만 사용한다.  그리고 이 모델은 pre-train 되어있고, 텍스트 모달리티에서 feature를 뽑는데 사용된다. 뽑아진 feature는 audio-image model의 classification performance를 높이는데 사용된다.  
@@ -68,11 +68,12 @@ Soft label로써 제공된다. Target model의 representation은 source model에
 
 이 논문에서 강조하는 바는 다음과 같다
 1. 우리는 현재 sentiment analysis 연구와는 동떨어지지만, real world task와 가까운 audio-image sentiment analysis의 중요성을 강조한다.    sentiment analysis에서 텍스트의 중요성이 높다 보니, 훈련에서만 text를 사용해서 audio-image의 성능을 높일 것이다.
-2. 이번 논문에서는 sentiment analysis란 특정 테스크에 대해서만 다루지만,  source와 target 간의 정보 퀄리티가 불균형한 상황에서도 사용가능하다.
-3. Sentiment analysis에 대한 여러가지 데이터 셋에 대해 실험 할 것이다. 기존의 major study와도 비교하겠다.  
-결과는 audio unimodal, visual unimodal, and audio-visual bimodal sentiment classification 이렇게 3가지에 대해 보여주겠다.
 
-<br>
+2. 이번 논문에서는 sentiment analysis란 특정 테스크에 대해서만 다루지만,  source와 target 간의 정보 분포가 불균형한 상황에서도 사용가능하다.
+
+3. Sentiment analysis에 대한 여러가지 데이터 셋에 대해 실험 할 것이다. 기존의 major study와도 비교하겠다.  
+
+결과는 audio unimodal, visual unimodal, and audio-visual bimodal sentiment classification 이렇게 3가지에 대해 보여주겠다.
 
 ## Problem defination
 
@@ -126,11 +127,15 @@ dense layer는 특정 차원의 표현으로 표현될 수 있도록 이 정보�
 
 Dropout이 overfitting을 막기 위해 각 layer에 적용되어 있다.  
 
+각 modality 마다 하나씩 존재한다.(text, image, audio)
+
 <br>
 
 #### 2) Classification network
 
-Classification network는 2개의 dense layer를 사용한다. 하나는 Hidden layer의 activation fuction인 ReLU layer이다. 나머지는 Output layer softmax를 사용한다. Embedding network와 동일하게 dropout이 적용돼 있다. Cross-entropy loss function을 사용한다. 
+Classification network는 2개의 dense layer를 사용한다. 하나는 Hidden layer의 activation fuction인 ReLU layer이다. 나머지는 Output layer softmax를 사용한다. Embedding network와 동일하게 dropout이 적용돼 있다. Cross-entropy loss function을 사용한다.  
+
+source, target Model에 하나씩 총 2개 존재한다.
 
 <br>
 
