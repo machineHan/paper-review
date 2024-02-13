@@ -41,9 +41,9 @@ Data fusing은 멀티모달 감정분석의 주된 접근방식이다.
 > Data fusing : merge data with different shapes, scales, modalities, or information
 
 Data fusing을 통해 합쳐진 정보는 부족한 정보를 보완에 보다 풍부한 정보를 제공한다. 초기에는 data fusing이 다른 모달들을 concatenated 하는 방식이였지만, 딥러닝 아키텍처의 발전으로 다양한 fusing methodologies가 제공되고 있다. Data fusing method는 크게 2개로 분류된다.
-- early fusing : 네트워크에 input layer 근처에서 fusing  low-level에서 바로 fusing하고, 합쳐진 데이터를 가지고 추출한다.
+- early fusing : 네트워크에 input layer 근처에서 fusing <br> low-level에서 바로 fusing하고, 합쳐진 데이터를 가지고 추출한다.
 
-- late fusing : 네트워크에 output layer 근처에서 fusing  hidden에서 추출된 각 modal feature들을 fusing한다. 
+- late fusing : 네트워크에 output layer 근처에서 fusing <br> hidden에서 추출된 각 modal feature들을 fusing한다. 
 
 하지만 최근의 audio-visual 정보를 적게 사용하는 multimodal sentiment analysis는 그들의 text-dependent 특성으로 인해 제한된다.  
 
@@ -68,11 +68,11 @@ Soft label로써 제공된다. Target model의 representation은 source model에
 
 이 논문에서 강조하는 바는 다음과 같다
 1. 우리는 현재 sentiment analysis 연구와는 동떨어지지만, real world task와 가까운 audio-image sentiment analysis의 중요성을 강조한다.    sentiment analysis에서 텍스트의 중요성이 높다 보니, 훈련에서만 text를 사용해서 audio-image의 성능을 높일 것이다.
-
 2. 이번 논문에서는 sentiment analysis란 특정 테스크에 대해서만 다루지만,  source와 target 간의 정보 퀄리티가 불균형한 상황에서도 사용가능하다.
-
 3. Sentiment analysis에 대한 여러가지 데이터 셋에 대해 실험 할 것이다. 기존의 major study와도 비교하겠다.  
 결과는 audio unimodal, visual unimodal, and audio-visual bimodal sentiment classification 이렇게 3가지에 대해 보여주겠다.
+
+<br>
 
 ## Problem defination
 
@@ -101,13 +101,11 @@ HMTL은 audio-image sentiment analysis의 성능 향상을 목표로 한다. 훈
 
 HMFL은 크게 3단계로 나눠진다. 
 
-1. Textual data(source modality)에서 뽑아온 feature를 통해 source model을 훈련한다. Source model은 GRU라는 층을 포함하고 있다. 여기서 출력된 textual representation은 HMTL에서 중요한 역할로 사용된다.  input(text) > target model > output(textual representation)
-
-2. 1번과정에서 pre-trained Source model의 knowledge를 target model에게 transfer한다.  이 과정에서 heterogeneous modality decoder (HM-Decoder)와 heterogeneous modality discriminator (HM-Discriminator)를 사용한다.    
-HM-decoder는 target model에서 얻은 target representation을 입력으로 받고,  source representation을 재구조 타겟으로 사용한다. (Target representation을 source와 유사하게 reconstruction한다. )  HM-decoder는 두 embedding space 사이의 correlation을 높인다.   
-HM-Discriminator는 source/target embedding representation을 분류하도록 훈련한다. 이런 추가 훈련을 통해, target model의 embedding layer가 훈련되고, 훈련을 거듭할 수록 source embedding representation과 구별하기 어려워진다.  즉, HM-Discriminator는 target model의 output이 source model의 output과 동일해지도록 학습한다
-
-3. 1,2번 과정이 끝나면 새로운 acoustic-visual data를 통한 sentiment analysis가 진행된다. 이런 상황에서 target model은 source model의 knowledge를 받아 acoustic-visual 만 존재하는 데이터 셋에서도 좋은 결과를 얻을 수 있다.   
+1. Textual data(source modality)에서 뽑아온 feature를 통해 source model을 훈련한다. Source model은 GRU라는 층을 포함하고 있다. 여기서 출력된 textual representation은 HMTL에서 중요한 역할로 사용된다. <br> input(text) > target model > output(textual representation)
+2. 1번과정에서 pre-trained Source model의 knowledge를 target model에게 transfer한다.  이 과정에서 heterogeneous modality decoder (HM-Decoder)와 heterogeneous modality discriminator (HM-Discriminator)를 사용한다. <br> HM-decoder는 target model에서 얻은 target representation을 입력으로 받고,  source representation을 재구조 타겟으로 사용한다. (Target representation을 source와 유사하게 reconstruction한다.)
+   > HM-decoder는 두 embedding space 사이의 correlation을 높인다.
+   > HM-Discriminator는 target model의 output이 source model의 output과 동일해지도록 학습한다.
+4. 1,2번 과정이 끝나면 새로운 acoustic-visual data를 통한 sentiment analysis가 진행된다. 이런 상황에서 target model은 source model의 knowledge를 받아 acoustic-visual 만 존재하는 데이터 셋에서도 좋은 결과를 얻을 수 있다.   
 
 논문에서 제시한 사진 중, HMFL이 적용되기 전과 후를 구분해 text,acoustic,visual data의 embedding space간의 차이를 보여주는 사진이 있다. HMTL를 적용하면 acoustic, visual data가 text data embedding에 인접한 모습이 확실히 보인다. 즉 sentiment analysis에서 핵심 역할을 하는 textual capability를 transfer learning하여 acoustic-visual dataset로도 좋은 classification performance를 보여준다.  
 
@@ -155,12 +153,11 @@ Dense layer로 구성되어 있다. ReLU for hidden layer, sigmoid for output la
 
 Target model output을 HM-Discriminator에 넣어서 0이 될 수 있도록 하는 target embedding network loss가 여기서 등장한다.  
 
->
-	Target embedding network loss
-	> target embedding network는 target representation이 HM-Discriminator를 거쳤을때 1이 나오게 끔 embedding network를 훈련한다.
+Target embedding network loss
+> target embedding network는 target representation이 HM-Discriminator를 거쳤을때 1이 나오게 끔 embedding network를 훈련한다.
 
-	HM-Discriminator loss
-	> source representation가 discriminator를 거쳤을 땐 0에 가깝도록 , target representation은 1에 가깝도록 하는 loss를 가지고 HM-Discriminator를 훈련한다.  비슷하게 target embedding network는 
+HM-Discriminator loss
+> source representation가 discriminator를 거쳤을 땐 0에 가깝도록 , target representation은 1에 가깝도록 하는 loss를 가지고 HM-Discriminator를 훈련한다.  비슷하게 target embedding network는
 
 이런 접근법이 source/target의 특징, 분산을 비슷하게 만들어 준다.  
 
