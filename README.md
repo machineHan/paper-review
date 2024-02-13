@@ -160,7 +160,7 @@ Target embedding network loss
 HM-Discriminator loss
 > source representation가 discriminator를 거쳤을 땐 0에 가깝도록 , target representation은 1에 가깝도록 하는 loss를 가지고 HM-Discriminator를 훈련한다.  비슷하게 target embedding network는
 
-이런 접근법이 source/target의 특징, 분산을 비슷하게 만들어 준다.  
+이런 접근법이 source/target의 특징, 분산 차이를 좁혀준다.  
 
 즉, 잘 훈련된 HM-Discriminator는 target과 source를 구별하지 못한다. (= acoustic-visual 만으로 text modality의 특성을 살릴 수 있다.) 이를 통해 target modality로만 성능이 좋은 sentiment analysis가 가능한다.
 
