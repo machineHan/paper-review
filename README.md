@@ -191,18 +191,13 @@ Embedding network에서 나온 representation과 이에 self-attention score를 
 
 Target model의 2개의 main objective function이 있다. 
 
-Classification Loss는 단순히 입력에 대한 예측의 Loss이다. (Classification network만을 업데이트 하는 것은 아니다) hyper parameter를 하나 곁들인다.  
+Classification objective function은 단순히 입력에 대한 예측의 Loss이다. (Classification network만을 업데이트 하는 것은 아니다) hyper parameter를 하나 곁들인다.  
 
-Target model embedding network는 multiple task를 해결하도록 설계된다.  
+Target model embedding network는 먼저 classification task를 할 수 있는 feature representation을 포함하도록(=> feature를 잘 뽑도록) 훈련하고 그리고 source/target이 비슷한 distribution을 갖도록  훈련한다.
 
-먼저 classification task를 할 수 있는 feature representation을 포함하도록 훈련하고(=> feature를 잘 뽑도록) 그리고 source/target이 비슷한 distribution을 갖도록  Target model embedding network를 훈련한다.
+Embedding objective function는 위에서 다룬 HM-Discrimination와 HM-Decoder에서 등장한 loss를 사용한다.
 
-Embedding network loss는 위에서 다룬 HM-Discrimination와 HM-Decoder에서 등장한 embedding loss를 사용한다. 이는 Target model의 objective function에 대한 loss이다.
-
-Embedding network loss를 통해, target modality만으로 source modality와 비슷하고, 연관 깊은 결과를 낼 수 있다.
-
-이 둘을 묶어 target model의 total loss로 칭한다.
-Total loss를 가지고 Target model 전체를 훈련한다.  
+Embedding objective function를 통해, target modality만으로 source modality와 비슷하고, 연관 깊은 결과를 낼 수 있다.
 
 종합적으로, training phase에서는 HM-Decoder/Discriminator, target embedding/classification network 총 4개가 훈련된다.  
 
