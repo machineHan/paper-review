@@ -104,6 +104,7 @@ HMFL은 크게 3단계로 나눠진다.
 1. Textual data(source modality)에서 뽑아온 feature를 통해 source model을 훈련한다. Source model은 GRU라는 층을 포함하고 있다. 여기서 출력된 textual representation은 HMTL에서 중요한 역할로 사용된다. <br> input(text) > target model > output(textual representation)
 2. 1번과정에서 pre-trained Source model의 knowledge를 target model에게 transfer한다.  이 과정에서 heterogeneous modality decoder (HM-Decoder)와 heterogeneous modality discriminator (HM-Discriminator)를 사용한다. <br> HM-decoder는 target model에서 얻은 target representation을 입력으로 받고,  source representation을 재구조 타겟으로 사용한다. (Target representation을 source와 유사하게 reconstruction한다.)
    > HM-decoder는 두 embedding space 사이의 correlation을 높인다.
+   
    > HM-Discriminator는 target model의 output이 source model의 output과 동일해지도록 학습한다.
 4. 1,2번 과정이 끝나면 새로운 acoustic-visual data를 통한 sentiment analysis가 진행된다. 이런 상황에서 target model은 source model의 knowledge를 받아 acoustic-visual 만 존재하는 데이터 셋에서도 좋은 결과를 얻을 수 있다.   
 
