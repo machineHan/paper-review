@@ -218,8 +218,8 @@ Target classification network | classification loss
 전반적인 과정을 요약하자면,
 1. Source model을 pre-training한다. 
 2. HM-Decoder와 HM-Discriminator를 이용하여 source -> target transfer learning을 한다.
-
 > 특이사항 : 모든 modality에 대한 embedding network를 개별로 존재한다(3개).  Classification network는 source/target 이렇게 2개 존재한다.
+3. target model을 사용해 성능 측정
 
 <br>
 
