@@ -208,12 +208,12 @@ Total loss를 가지고 Target model 전체를 훈련한다.
 
 다음은 어디서 어떤 Loss를 이용해 훈련하는지를 요약한 결과이다.
 
-Network | loss type
+Network | Training stuff
 --- | ---
 HM-Decoder | decoder loss
 HM-Discriminator | Discriminator loss
-Target embedding network | classification loss, embedding loss
-Target classification network | classification loss
+Target embedding network | classification, embedding object function
+Target classification network | classification object function
 
 전반적인 과정을 요약하자면,
 1. Source model을 pre-training한다. 
