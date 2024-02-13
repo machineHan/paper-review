@@ -210,8 +210,8 @@ Total loss를 가지고 Target model 전체를 훈련한다.
 
 Network | Training stuff
 --- | ---
-HM-Decoder | decoder loss
-HM-Discriminator | Discriminator loss
+HM-Decoder | decoder loss, MSE
+HM-Discriminator | Discriminator loss, cross entropy
 Target embedding network | classification, embedding object function
 Target classification network | classification object function
 
