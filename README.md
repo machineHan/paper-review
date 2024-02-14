@@ -225,6 +225,27 @@ Target classification network | classification object function
 
 ## Experiments and Discussion
 
+여러가지 baseline model에 대해 unimodal(Textual, visual, acoustic) sentiment analysis, bi-modal sentiment analysis(visual-acoustic)에 대한 성능 비교를 행했다.  
+
+HMTL method는 textual data가 제한된 Modal 환경에서 보다 높은 성능을 보여줬다.  
+
+
+<br>
+
+## summary
+
+target(image-audio)를 source(text)와 유사한 값을 출력하도록 하는 method이다.  
+
+이 과정에서 GANs architecture를 굉장히 유사하게 모방했다.
+
+HM-Decoder는 source와 target이 최대한 유사하게 표현되게 훈련하는 GANs에서 generator역할을 한다.  
+
+HM-Discriminator는 source는 0(fake), Target은 1(real)로 예상하게끔, 즉 source, target을 구별하게 끔 훈련한다. GANs에 Discriminator에 해당한다.
+
+HM-Decoder/Discriminator는 각자에 맞는 loss에 맞춰 훈련한다.  
+
+Target embedding network, classification network는 2개의 main objective function에 맞춰 훈련한다.
+
 
 
 
