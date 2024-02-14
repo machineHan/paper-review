@@ -210,8 +210,8 @@ Embedding objective function를 통해, target modality만으로 source modality
 
 Network | Training stuff
 --- | ---
-HM-Decoder | decoder loss, MSE
-HM-Discriminator | Discriminator loss, cross entropy
+HM-Decoder | decoder loss
+HM-Discriminator | Discriminator loss
 Target embedding network | classification, embedding object function
 Target classification network | classification object function
 
