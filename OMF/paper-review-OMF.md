@@ -204,7 +204,7 @@ Multimodal 상황에서, density function은 energy function을 통해 만들 �
 
 ![식 12](https://github.com/machineHan/paper-review-tree/assets/154798552/3fa69234-0353-454e-a496-6c7f09d1290e)
 
-이 식에서 energy 함수는 energy함수에 대해 선형 함수이다.  
+식을 보면 알 수 있듯이, density 함수는 energy함수에 대해 선형 함수이다.  
 
 다음은 density 함수를 구할때 사용하는 Energy 함수이다.  
 
