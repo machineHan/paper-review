@@ -109,10 +109,12 @@ text-only model에서 생성된 Ptext(xt|c,x<t)의 값이 임계치 보다 작�
 
 <br>
 
-## summary
+## summary and impression
 
 이 논문은 VLM의 약한 언어적 능력을 극복하기 위한 method를 연구한 논문이다. 
 
 language model에서 나온 Token 을 베이스로 해서, VLM의 visual weight를 PMI를 통해 추출한다. 이 둘을 곱해서 도출된 VLIS score를 통해 다음 token을 우추하게 된다.  
 
 그리고 PMI의 전통적인 단점인 marginal likelihood가 작으면 값이 극으로 치우쳐지는 문제도 해결한 논문이다.  
+
+VLM 자체의 언어적인 능력을 해결하지 않고 그 부담을 language model에게 넘기는 architecture가 창의로웠다.
