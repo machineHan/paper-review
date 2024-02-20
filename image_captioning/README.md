@@ -1,4 +1,4 @@
-# paper-reveiw-Improving-multimodal-dataset-with-Image-Captioning
+# Improving multimodal dataset with Image Captioning
 
 
 ## 요약
