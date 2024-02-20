@@ -123,9 +123,7 @@ Static fusion과 대조적으로, dynamic fusion의 decision weight는 다른 �
 
 #### Theorem 1 : Generalization bound of multimodal fusion
 
-> generalization bound : 머신러닝에서 훈련 알고리즘을 정할때, Generalization error가 가장 적은 hypothesis를 골라야한다. 하지만 Generalization error는 unknown distribution에 의존하므로 정확한 값을 구할 수 없다. 
-<br>
-그리하여 대안으로 empirical error를 이용해 Generalization error의 bound를 정하고, 이를 통해 비교를 한다. 이를 generalization bound라 칭한다.
+> generalization bound : 머신러닝에서 훈련 알고리즘을 정할때, Generalization error가 가장 적은 hypothesis를 골라야한다. 하지만 Generalization error는 unknown distribution에 의존하므로 정확한 값을 구할 수 없다. <br>그리하여 대안으로 empirical error를 이용해 Generalization error의 bound를 정하고, 이를 통해 비교를 한다. 이를 generalization bound라 칭한다.
 
 
 다음은 multimodal fusion의 generalization bound 이다.  
