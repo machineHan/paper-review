@@ -132,7 +132,7 @@ Static fusion과 대조적으로, dynamic fusion의 decision weight는 다른 �
 
 다음은 multimodal fusion의 generalization bound 이다.  
 
-그림 식 2
+![식 2](https://github.com/machineHan/paper-review-tree/assets/154798552/234160df-d1da-4cfb-8e6a-f450ee894080)
 
 식을 보면 multimodal classifier의 generalization error는 모든 unimodal의 component의 평균성능에 의해 제한된다.
 
