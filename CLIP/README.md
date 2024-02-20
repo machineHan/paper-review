@@ -1,4 +1,4 @@
-# paper-review---CoCoFL
+# CoCoFL: Communication- and Computation-Aware Federated Learning via Partial NN Freezing and Quantization
 
 ## Abstract
 
