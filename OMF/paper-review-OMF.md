@@ -148,13 +148,21 @@ Static fusion과 대조적으로, dynamic fusion의 decision weight는 다른 �
 
 #### Theorem 2 : scenario that dynamic fusion is better than static fusion
 
-그림 식 4,5,6,7,8
 
-모든 input modality에 대해 식 5,6이 성립되는 상황에서는 식 7,8이 성립되어 식 4번이 성립된다. 즉 dynamic fusion이 더 좋다.  
+![식 4](https://github.com/machineHan/paper-review-tree/assets/154798552/aa120414-7d71-411a-9a13-bc9054c5c4fc)
+우리는 이 식을 만족하는 상황을 찾아야한다.
 
-식 5번이 성립한다면 dynamic상황에서 Term-C/L이 static에 비해 더 작거나 같게 설정된다. 식6은 dynamic의 Term-Cov를 음수로 만든다.  
+![식 5](https://github.com/machineHan/paper-review-tree/assets/154798552/d3fa4aac-06af-4d47-a98c-604c51404145)
+![식 6](https://github.com/machineHan/paper-review-tree/assets/154798552/27d46e3c-ab8f-44e7-82bf-6d3ec6f5f82d)
 
-즉, Dynamic fusion의 상황에서 식 5,6번을 만족하는 unimodal classifier weight를 찾는 것이 관건이다.  
+모든 input modality에 대해 식 5,6이 성립되는 상황에서는 다음에 주어지는
+
+![식 7](https://github.com/machineHan/paper-review-tree/assets/154798552/0b8a078f-e587-489c-9ac6-d54bd3137df0)
+![식 8](https://github.com/machineHan/paper-review-tree/assets/154798552/32724d1b-7001-4c97-a907-da16aef88325)
+
+식 7,8이 성립되어 식 4번이 성립된다. 즉 dynamic fusion이 더 좋다.  
+
+즉, 식 5,6번을 만족하는 unimodal classifier weight라면 Dynamic fusion의 상황에서 더 좋은 성능을 발휘한다. 그리하여 식 5,6번에 성립하는 fusion weight를 찾는 것이 관건이다.  
 
 
 <br>
@@ -181,7 +189,7 @@ dynamic fusion에서 식6.번을 만족하는 weight를 찾는 것과 uncertaint
 Uncertainty-aware fusion 함수는 구해진 uncertainty의 선형, 음의 함수이다.  
 식은 다음과 같다.
 
-그림 식 9
+![식 9](https://github.com/machineHan/paper-review-tree/assets/154798552/0f0bd857-728b-40ea-b1ac-cfa9326c72ac)
 
 α ,β는 하이퍼 파라미터로, 이를 조정하며 식 5,6에 맞는 weight를 찾을 수 있다.  
 
@@ -198,13 +206,13 @@ Robust dynamic fusion의 핵심과제(식 5,6번에 부합하는 weight 찾기)�
 
 Multimodal 상황에서, density function은 energy function을 통해 만들 수 있다.  
 
-그림 식 12
+![식 12](https://github.com/machineHan/paper-review-tree/assets/154798552/3fa69234-0353-454e-a496-6c7f09d1290e)
 
 이 식에서 energy 함수는 energy함수에 대해 선형 함수이다.  
 
 다음은 density 함수를 구할때 사용하는 Energy 함수이다.  
 
-그림 식 13
+![식 13](https://github.com/machineHan/paper-review-tree/assets/154798552/fb84cf4c-d246-4b48-9a39-e7fabc4e08e6)
 
 균일하게 분포된 예측은 높은 질의 uncertainty를 얻을 수 있게한다.   
 
@@ -216,17 +224,22 @@ Respective loss와 uncertainty간의 상관관계를 향상하기 위한 간단�
 
 특정 모달리티 i에 대한 데이터 포인트가 (xi,yi)이 주어 졌을 때, 훈련 평균 로스는 다음과 같이 구해진다.  
 
-식 14 그림
+![식 14](https://github.com/machineHan/paper-review-tree/assets/154798552/08453159-dfdf-4311-8d0e-360a0886cc35)
 
 각 epoch마다 생겼던 Loss에 대한 평균치를 나타낸다. 왜 과거의 훈련 궤적을 사용한다고 하냐면, 식에서 에포크마다의 loss를 가지고 평균을 내기 때문이다.
 
 어느 논문에서, 분류하기 쉬운 셈플들로 학습을 한 것이 분류하기 어려운 셈플들로 훈련한 것 보다 더 쉽게 배워진다는 것을 보였다. 다음과 같은 관계를 따르는 훈련에 의한 dynamic fusion model을 정규화하는 것이 바람직하다.  
 
-식 15 그림
+![식 15](https://github.com/machineHan/paper-review-tree/assets/154798552/067f3e21-def2-4d6e-a963-686ba70da5ce)
 
 마지막 15번째 식을 끝으로 우리는 regularization에 대한 식을 완성할 수 있고, QMF method에 적용될 전체적인 로스를 구할 수 있다.
 
-식 16,17,18의 그림
+
+![식 16](https://github.com/machineHan/paper-review-tree/assets/154798552/691051e4-2db0-49eb-9da0-63535184405e)
+![식 17](https://github.com/machineHan/paper-review-tree/assets/154798552/1e6b2d26-3c8b-4fa7-ac52-903b8be914fa)
+![식 18](https://github.com/machineHan/paper-review-tree/assets/154798552/71ce2b54-ef63-483d-8479-057014075259)
+
+<br>
 
 QMF 순서에 대해 간략하게 서술하겠다.
 1. 입력에 대한 각 unimodality classifier에 결과를 만듬
