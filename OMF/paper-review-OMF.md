@@ -45,9 +45,7 @@ Dynamic multimodal fusion이 놀라운 성과를 보여주고 있지만, 이론�
 이 논문에서 개재되는 바를 요약하자면 다음과 같다.
 
 - 이 논문은 강력한 multimodal fusion의 기준과 이점을 이해하기 위한 이론적인 framework를 만든다.  
-먼저,   decision fusion method의 일반화 오차 한계(= 일반화 능력)를 Rademacher complexity 관점에서 분석한다. 그리고 어떤 상황에서 static fusion보다 dynamic fusion이 좋은지를 찾는다.
-
-결과 부터 말하자면, Multimodal fusion의 fusion weight가 unimodal generalization error와 음의 상관관계가 있을 때, static 보다 dynamic fusion이 더 좋은 성능을 낸다.
+먼저,   decision fusion method의 일반화 오차 한계(= 일반화 능력)를 Rademacher complexity 관점에서 분석한다. 그리고 어떤 상황에서 static fusion보다 dynamic fusion이 좋은지를 찾는다. <br> 결과 부터 말하자면, Multimodal fusion의 fusion weight가 unimodal generalization error와 음의 상관관계가 있을 때, static 보다 dynamic fusion이 더 좋은 성능을 낸다.
 
 - 이론적인 분석하에, dynamic fusion의 일반화능력이 uncertainty estimation의 성능과 동일하다는 것이 보여진다. 이것은 새로운 dynamic fusion algorithm을 평가하고 설계하는 원리를 직접적으로 암시한다.
 
