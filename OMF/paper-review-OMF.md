@@ -69,7 +69,7 @@ Uncertainty-based multimodal fusion method가 많은 테스크에서 큰 이점�
 
 <br>
 
-#Uncertainty Estimation
+### Uncertainty Estimation
 
 반복하지만, fusion method에 대한 논리적인 이해가 충분하지 않다. 이로 인해 안정성이 중요한 분야에선 사용하지 않는다.  
 
