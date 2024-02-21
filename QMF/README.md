@@ -266,7 +266,7 @@ QMF 순서에 대해 간략하게 서술하겠다.
 
 7. 구해진 각기다른 Loss를 가지고 unimodal predictor를 업데이트한다.
 
-전반적인 fusion method에 대한 논리적 분석을 다루지 않고 late fusion, ensemble-like fusion에 대한 분석만을 다루고 있다.  
+전반적인 fusion method에 대한 논리적 분석을 다루지 않고 late fusion에 대한 분석만을 다루고 있다.  
 
 근사적인 방식의 중요성도 보인다. 대부분의 논문이 어려운 난관을 타개하기 위해 비슷하지만 다르고 좀 더 쉬운 방식을 택한다. 이 논문에서도 weight를 찾는 상황에서 Assumption를 설정해 uncertainty를 가지고 구했다.
 
