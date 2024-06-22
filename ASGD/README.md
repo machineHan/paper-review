@@ -4,9 +4,13 @@
 
 ## Abstract
 
-Dnn을 활용한 speech recognition model이 좋은 preformance를 거둠 기존의 GMM-HMM모델에 비해
+Dnn을 활용한 speech recognition model이 기존의 GMM-HMM모델에 비해 좋은 preformance를 거둠 
+
+
 하지만 DNN의 엄청난 양의 파라미터로 인해 training cost가 크다 > 오래걸린다.
+
 게다가 병렬화도 어려운 상황이다. > SGD의 빈번한 모델 업데이트, 모델 업데이트의 의존성
+
 그리하여 ASGD를 제시 > 병렬적으로 gradient 계산후, 비동기적으로 모델 업데이트
 
 <br/><br/>
