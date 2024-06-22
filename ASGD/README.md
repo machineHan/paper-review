@@ -139,7 +139,7 @@ ASGD는 모든 미니배치에 대해 서버의 클라이언트 모델만 업데
 
 
 
-ASGD의 단점 : 여러 버전의 모델을 가지고 집계해 업데이트함, accurancy 가 굉장히 낮음, staleness : 오래되어 이상한
+ASGD의 단점 : 여러 버전의 모델을 가지고 집계해 업데이트함, accurancy 가 굉장히 낮음, staleness 문제 발생
 <br/><br/>
 
 > ex ) GPU1 : model1 , GPU2 : model3  | 각 번호는 미니배치가 몇번 적용된 모델인지를 나타냄.
