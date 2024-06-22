@@ -22,6 +22,8 @@ dnn을 활용한 speech recognition이 SOTA를 이뤘다.
 DNN layer의 초기화는 기존 BP algorithm 기반의 unsupervised pre-train 한 것을 가지고 layer by layer로 진행한다.
 하지만 좋은 performance에도 단점은 존재하는데, 바로 DNN 구조에서 발생하는 많은 파라미터이다.
 그로인해 자연스럽게 training cost가 증가한다.
+
+
 <br/><br/>
 기존의 SOTA였던 GMM-HMM은 동기적 요소가 존재하지 않고, 각 프로세스가 독립적이라  parallelism이 자유롭다, 
 하지만 DNN은 구조 특성상 parallelism이 어렵다.
