@@ -35,13 +35,13 @@ DNN layer의 초기화는 기존 BP algorithm 기반의 unsupervised pre-train �
 
 동기적인 요소를 배재해, 일정수준의 parallelism을 얻고 이를 통해 속도 향상을 꾀한다.
 
-SGD > sequential process : forwardness, backdrop 
+SGD > sequential forwardness, sequential backdrop 
 <br/><br/>
 sum up in server with computed gradient from each GPU. If each GPU has different training speed, wait until entire GPU data are arrvied => synchronous cost가 높다
 
 <br/><br/>
 
-ASGD > Calculate gradient : parallel    |        update model : Asynchronously
+ASGD : parallel gradient Calculation, Asynchronous model update
 
 
 <br/>
