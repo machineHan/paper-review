@@ -141,7 +141,7 @@ SOTA computer vision은 계산을 겁나게 많이 한다.  이전 모델들은 
 
 <br/>
 
-그래서 우리는 훈련 효율성이 language supervision의 키워드임을 알았고 이를 기반으로 Pre-training Method을 선택했다.
+그래서 우리는 훈련 효율성의 키워드가 language supervision임을 알았고 이를 기반으로 Pre-training Method을 선택했다.
 
 <br/>
 
